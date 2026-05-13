@@ -373,21 +373,48 @@
       color: var(--ink);
       opacity: 0.7;
     }
-    /* Persistent heart — stays in the same spot for the entirety of the page scroll */
-    .persistent-heart {
-      position: fixed;
-      top: 50%;
-      left: 32px;
-      transform: translateY(-50%);
-      width: 44px;
-      height: auto;
-      opacity: 0.75;
+    /* Floating sticky hearts.
+       Two heart zones wrap content vertically:
+         heart-zone--top    wraps hero + split, hero-pull heart sticks here
+         heart-zone--bottom wraps approach + all following sections, approach heart sticks here
+       Each zone has an absolutely-positioned anchor that defines the horizontal
+       position; the heart inside is position:sticky so it pins to the viewport
+       top offset while its zone is in view, then releases when the zone ends. */
+    .heart-zone { position: relative; }
+    .heart-zone__anchor {
+      position: absolute;
+      top: 0;
+      height: 100%;
       pointer-events: none;
       z-index: 5;
-      transition: opacity 0.3s;
+    }
+    .heart-zone__anchor--right {
+      right: 14%;
+      width: 44px;
+    }
+    .heart-zone__anchor--left {
+      left: 80px;
+      width: 56px;
+    }
+    .floating-heart {
+      position: sticky;
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.85;
+    }
+    /* Hero heart starts low so it appears near the pull-quote card on load */
+    .heart-zone__anchor--right .floating-heart {
+      margin-top: 620px;
+      top: 100px;
+    }
+    /* Approach heart starts under the eyebrow */
+    .heart-zone__anchor--left .floating-heart {
+      margin-top: 220px;
+      top: 100px;
     }
     @media (max-width: 1100px) {
-      .persistent-heart { display: none; }
+      .heart-zone__anchor { display: none; }
     }
 
     /* ---------- Who we serve (B) ---------- */
@@ -965,9 +992,6 @@
   </style>
 </head>
 <body>
-  <!-- Persistent heart — fixed to viewport, visible throughout the entire page scroll -->
-  <img class="persistent-heart" src="/logo/bism-heart.png" alt="" aria-hidden="true">
-
   <div class="wrap">
 
     <!-- ===================== NAV ===================== -->
@@ -984,6 +1008,12 @@
       </nav>
       <a class="nav__cta" href="#cta" data-modal="modal-request">Request services →</a>
     </header>
+
+    <!-- ===================== HERO + SPLIT (top heart zone) ===================== -->
+    <div class="heart-zone heart-zone--top">
+      <div class="heart-zone__anchor heart-zone__anchor--right">
+        <img class="floating-heart" src="/logo/bism-heart.png" alt="" aria-hidden="true">
+      </div>
 
     <!-- ===================== HERO (Direction A copy) ===================== -->
     <section class="hero">
@@ -1016,7 +1046,6 @@
             <source src="/media/hero.mp4" type="video/mp4">
           </video>
           <div class="hero__pull">
-            <img src="/logo/bism-heart.png" alt="">
             <div class="hero__pull-quote">"Kindness in care.<br>Your voice in action."</div>
             <div class="hero__pull-label">Our promise</div>
           </div>
@@ -1055,6 +1084,14 @@
         </div>
       </div>
     </section>
+
+    </div><!-- /heart-zone--top -->
+
+    <!-- ===================== APPROACH + REMAINING SECTIONS (bottom heart zone) ===================== -->
+    <div class="heart-zone heart-zone--bottom">
+      <div class="heart-zone__anchor heart-zone__anchor--left">
+        <img class="floating-heart" src="/logo/bism-heart.png" alt="" aria-hidden="true">
+      </div>
 
     <!-- ===================== APPROACH MANIFESTO (Direction B) ===================== -->
     <section class="approach" id="approach">
@@ -1311,6 +1348,8 @@
         <div><a href="mailto:info@bismliving.com">info@bismliving.com</a></div>
       </div>
     </footer>
+
+    </div><!-- /heart-zone--bottom -->
 
   </div>
 
