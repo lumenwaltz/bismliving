@@ -215,7 +215,7 @@
       height: 100%;
       min-height: 520px;
     }
-    .areas__map-video {
+    .areas__map-image {
       width: 100%;
       height: auto;
       display: block;
@@ -373,7 +373,22 @@
       color: var(--ink);
       opacity: 0.7;
     }
-    .approach__side img { height: 56px; }
+    /* Persistent heart — stays in the same spot for the entirety of the page scroll */
+    .persistent-heart {
+      position: fixed;
+      top: 50%;
+      left: 32px;
+      transform: translateY(-50%);
+      width: 44px;
+      height: auto;
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: 5;
+      transition: opacity 0.3s;
+    }
+    @media (max-width: 1100px) {
+      .persistent-heart { display: none; }
+    }
 
     /* ---------- Who we serve (B) ---------- */
     .serve {
@@ -930,6 +945,9 @@
     /* ---------- Responsive (light pass) ---------- */
     @media (max-width: 1100px) {
       .hero, section, .nav { padding-left: 32px; padding-right: 32px; }
+      /* On mobile, drop sticky on the approach eyebrow so it scrolls naturally
+         with the section content (avoids overlap when grid collapses). */
+      .approach__side { position: static; top: auto; }
       .hero__grid, .approach__grid, .serve__grid, .areas__grid,
       .careers__grid, .faq__grid, .cta__grid, .split__grid,
       .resources__grid, .quotes__small, .approach__points,
@@ -947,6 +965,9 @@
   </style>
 </head>
 <body>
+  <!-- Persistent heart — fixed to viewport, visible throughout the entire page scroll -->
+  <img class="persistent-heart" src="/logo/bism-heart.png" alt="" aria-hidden="true">
+
   <div class="wrap">
 
     <!-- ===================== NAV ===================== -->
@@ -1040,7 +1061,6 @@
       <div class="approach__grid">
         <div class="approach__side">
           <div class="eyebrow">Our approach</div>
-          <img src="/logo/bism-heart.png" alt="">
         </div>
         <div>
           <h2>We support — <em>we don't steer.</em></h2>
@@ -1113,12 +1133,9 @@
     <section class="areas" id="areas">
       <div class="areas__grid">
         <div class="areas__map">
-          <video class="areas__map-video" data-scroll-video
-                 preload="auto" muted playsinline
-                 disablepictureinpicture
-                 aria-label="Los Angeles area Regional Centers — animated map">
-            <source src="/media/map.mp4" type="video/mp4">
-          </video>
+          <img class="areas__map-image" src="/media/map.png"
+               alt="Map of Los Angeles area Regional Centers — North LA County, San Gabriel/Pomona, Westside, Lanterman, Eastern LA, South Central LA, Harbor"
+               loading="lazy" decoding="async">
           <div class="areas__map-label">Los Angeles area Regional Centers</div>
         </div>
         <div>
