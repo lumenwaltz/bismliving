@@ -388,12 +388,6 @@
       pointer-events: none;
       z-index: 5;
     }
-    .heart-zone__anchor--right {
-      /* Approximate horizontal position of the original pull-quote card heart
-         (left edge of right column on the 1.2fr:1fr hero grid). */
-      right: 41%;
-      width: 36px;
-    }
     .heart-zone__anchor--left {
       left: 80px;
       width: 56px;
@@ -404,12 +398,6 @@
       height: auto;
       display: block;
       opacity: 0.85;
-    }
-    /* Hero heart starts where the pull-quote card heart used to sit (lower
-       portion of the hero photo on the right side). */
-    .heart-zone__anchor--right .floating-heart {
-      margin-top: 680px;
-      top: 100px;
     }
     /* Approach heart starts under the "Our Approach" eyebrow */
     .heart-zone__anchor--left .floating-heart {
@@ -1009,12 +997,6 @@
       <a class="nav__cta" href="#cta" data-modal="modal-request">Request services →</a>
     </header>
 
-    <!-- ===================== HERO + SPLIT (top heart zone) ===================== -->
-    <div class="heart-zone heart-zone--top">
-      <div class="heart-zone__anchor heart-zone__anchor--right">
-        <img class="floating-heart" src="/logo/bism-heart.png" alt="" aria-hidden="true">
-      </div>
-
     <!-- ===================== HERO (Direction A copy) ===================== -->
     <section class="hero">
       <div class="hero__grid">
@@ -1046,6 +1028,7 @@
             <source src="/media/hero.mp4" type="video/mp4">
           </video>
           <div class="hero__pull">
+            <img src="/logo/bism-heart.png" alt="">
             <div class="hero__pull-quote">"Kindness in care.<br>Your voice in action."</div>
             <div class="hero__pull-label">Our promise</div>
           </div>
@@ -1084,8 +1067,6 @@
         </div>
       </div>
     </section>
-
-    </div><!-- /heart-zone--top -->
 
     <!-- ===================== APPROACH + REMAINING SECTIONS (bottom heart zone) ===================== -->
     <div class="heart-zone heart-zone--bottom">
