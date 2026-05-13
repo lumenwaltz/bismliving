@@ -389,8 +389,10 @@
       z-index: 5;
     }
     .heart-zone__anchor--right {
-      right: 14%;
-      width: 44px;
+      /* Approximate horizontal position of the original pull-quote card heart
+         (left edge of right column on the 1.2fr:1fr hero grid). */
+      right: 41%;
+      width: 36px;
     }
     .heart-zone__anchor--left {
       left: 80px;
@@ -403,12 +405,13 @@
       display: block;
       opacity: 0.85;
     }
-    /* Hero heart starts low so it appears near the pull-quote card on load */
+    /* Hero heart starts where the pull-quote card heart used to sit (lower
+       portion of the hero photo on the right side). */
     .heart-zone__anchor--right .floating-heart {
-      margin-top: 620px;
+      margin-top: 680px;
       top: 100px;
     }
-    /* Approach heart starts under the eyebrow */
+    /* Approach heart starts under the "Our Approach" eyebrow */
     .heart-zone__anchor--left .floating-heart {
       margin-top: 220px;
       top: 100px;
@@ -972,9 +975,6 @@
     /* ---------- Responsive (light pass) ---------- */
     @media (max-width: 1100px) {
       .hero, section, .nav { padding-left: 32px; padding-right: 32px; }
-      /* On mobile, drop sticky on the approach eyebrow so it scrolls naturally
-         with the section content (avoids overlap when grid collapses). */
-      .approach__side { position: static; top: auto; }
       .hero__grid, .approach__grid, .serve__grid, .areas__grid,
       .careers__grid, .faq__grid, .cta__grid, .split__grid,
       .resources__grid, .quotes__small, .approach__points,
@@ -1198,20 +1198,20 @@
     <section class="quotes" id="testimonials">
       <div class="quotes__label">From families</div>
       <blockquote>
-        "We waited a long time for the right vendor. The difference is that <em>they ask my son what he wants</em> — and they wait for the answer."
+        "We waited a long time for the right vendor. The difference is that <em>they ask my son what he wants</em>, and they listen and help."
       </blockquote>
       <div class="quotes__attrib">David &amp; Anne K. — Parents, Long Beach</div>
       <div class="quotes__small">
         <div>
-          <p>"For the first time, my brother has a morning routine he chose himself. They didn't impose it — they noticed it."</p>
+          <p>"For the first time, my brother has a morning routine. He cares to participate more."</p>
           <div class="quotes__small-name">Marisol R., Pasadena</div>
         </div>
         <div>
-          <p>"After years of churn with other vendors, the same DSP has been with my daughter for three years. That's the whole story."</p>
+          <p>"After years of replacement after replacement with other vendors, the same DSP has been with my daughter for three years. This is really, really good for her."</p>
           <div class="quotes__small-name">Linda T., West LA</div>
         </div>
         <div>
-          <p>"They taught my son to take the bus. They also taught him it's okay to ask for help. Both matter."</p>
+          <p>"They taught my son to take the bus. They also taught him it's okay to ask for help."</p>
           <div class="quotes__small-name">Ahmad &amp; Sara F., Long Beach</div>
         </div>
       </div>
