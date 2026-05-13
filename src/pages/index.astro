@@ -1,0 +1,1747 @@
+---
+// Bism Supported Living — landing page (initial 1:1 port from mockup)
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bism Supported Living · SLS & ILS in Los Angeles County · California Regional Center vendor</title>
+  <meta name="description" content="Bism Supported Living, LLC is a California Regional Center vendored provider of Supported Living Services (SLS) and Independent Living Services (ILS) for neurodivergent adults across Los Angeles County. Vendored with FDLRC (#PD4210); open to clients of any California Regional Center. Person-centered, trauma-informed support — paced to the people we serve. English, Spanish, Vietnamese.">
+  <meta name="keywords" content="Bism, Bism Supported Living, Bism SLS, SLS Los Angeles County, ILS Los Angeles County, Supported Living Services Glendale, Independent Living Services Glendale, California Regional Center vendor, FDLRC vendor, Lanterman Regional Center vendor, PD4210, NLACRC, SGPRC, Westside Regional Center, ELARC, Harbor Regional Center, SCLARC, autism adult services Los Angeles, developmental disability services LA, neurodivergent adult support, person-centered planning, IPP, Vietnamese-speaking DSP Los Angeles, Spanish-speaking DSP Los Angeles, 24-hour SLS">
+  <meta name="author" content="Bism LLC">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bism Supported Living · SLS & ILS in Los Angeles County">
+  <meta property="og:description" content="California Regional Center vendored provider of Supported and Independent Living Services for neurodivergent adults in LA County.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bism Supported Living · SLS & ILS in Los Angeles County">
+  <meta name="twitter:description" content="California Regional Center vendored provider of Supported and Independent Living Services for neurodivergent adults in LA County.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Direction D · Storybook palette ---------- */
+    :root {
+      --bg:        #f7f1e3;
+      --paper:     #fdf9ee;
+      --surface:   #ead9b6;
+      --deep:      #2d2820;   /* dark band — D's ink */
+      --ink:       #2d2820;
+      --soft-ink:  #5a5040;
+      --accent:    #7d8a5e;
+      --accent-deep: #5d6a44;
+      --accent-soft: #a8b48a;  /* lightened from D accent for dark-bg use */
+      --warm:      #c47a4f;
+      --pink:      #d4a190;
+      --border:    #d8c8a8;
+      --border-soft: #e6dcc0;
+
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --body:    'Inter', -apple-system, system-ui, sans-serif;
+      --mono:    'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; cursor: pointer; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .wrap { max-width: 1440px; margin: 0 auto; }
+
+    /* ---------- Header ---------- */
+    .nav {
+      padding: 28px 80px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .nav__logo img { height: 90px; width: auto; }
+    .nav__links {
+      position: relative;
+      display: flex; gap: 40px;
+      font-size: 15px; color: var(--ink);
+    }
+    .nav__links::after {
+      content: "";
+      position: absolute;
+      left: -120px; right: -120px;
+      bottom: -18px;
+      height: 1px;
+      background: var(--border);
+    }
+    .nav__links a { text-decoration: none; }
+    .nav__cta {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------- Eyebrow ---------- */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 28px;
+    }
+    .eyebrow--bar {
+      display: inline-flex; align-items: center; gap: 12px;
+    }
+    .eyebrow--bar::before {
+      content: ""; width: 24px; height: 1px; background: currentColor;
+      display: inline-block;
+    }
+
+    section { padding: 120px 80px; }
+
+    /* ---------- HERO (Direction A copy) ---------- */
+    .hero {
+      padding: 100px 80px 80px;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: 77px;
+      line-height: 1.05;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .hero h1 em {
+      color: var(--accent-deep);
+      font-style: italic;
+    }
+    .hero__lead {
+      font-size: 21px;
+      line-height: 1.55;
+      margin-top: 36px;
+      max-width: 560px;
+      color: var(--ink);
+      opacity: 0.78;
+    }
+    .hero__ctas {
+      display: flex; gap: 16px; margin-top: 44px;
+    }
+    .btn {
+      padding: 18px 32px;
+      border-radius: 999px;
+      font-size: 15px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .btn--solid {
+      background: var(--ink);
+      color: var(--bg);
+      border: 1px solid var(--ink);
+    }
+    .btn--ghost {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+    }
+    .hero__partners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      opacity: 0.85;
+    }
+
+    .hero__photo {
+      position: relative;
+    }
+    .photo {
+      aspect-ratio: 4 / 5;
+      background:
+        repeating-linear-gradient(135deg,
+          var(--surface) 0 12px,
+          var(--border) 12px 24px);
+      color: var(--soft-ink);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+    .photo--sage { background: repeating-linear-gradient(135deg, #c9d2b8 0 12px, #bcc7a7 12px 24px); }
+    .photo--warm { background: repeating-linear-gradient(135deg, #e8dfd1 0 12px, #ddd1be 12px 24px); }
+    .photo--clay { background: repeating-linear-gradient(135deg, #d4b69b 0 12px, #c8a98c 12px 24px); }
+    .photo--deep { background: repeating-linear-gradient(135deg, #3a3a35 0 12px, #33332e 12px 24px); color: #aea696; }
+
+    /* Scroll-synced video — overrides .photo placeholder visuals */
+    .photo--video {
+      background: var(--surface);
+      padding: 0;
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .hero__photo-video { aspect-ratio: 3 / 4; height: auto; }
+    .careers__photo.photo--video {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 520px;
+    }
+    .areas__map-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      background: var(--surface);
+    }
+
+    .hero__pull {
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 240px;
+      background: var(--paper);
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 24px 48px -28px rgba(45, 40, 32, 0.18);
+    }
+    .hero__pull img { height: 36px; margin-bottom: 14px; }
+    .hero__pull-quote {
+      font-family: var(--display);
+      font-size: 22px;
+      line-height: 1.2;
+      font-style: italic;
+      color: var(--ink);
+    }
+    .hero__pull-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      margin-top: 10px;
+    }
+
+    /* ---------- SLS / ILS split (B) ---------- */
+    .split {
+      padding: 0;
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .split__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .split__col {
+      padding: 120px 56px;
+    }
+    .split__col + .split__col {
+      border-left: 1px solid rgba(247, 241, 227, 0.22);
+    }
+    .split__label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--bg);
+      opacity: 0.75;
+      margin-bottom: 28px;
+    }
+    .split h2 {
+      font-family: var(--display);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      color: var(--bg);
+      letter-spacing: -0.02em;
+    }
+    .split p {
+      font-size: 17px;
+      line-height: 1.65;
+      margin-top: 28px;
+      color: var(--bg);
+      opacity: 0.72;
+      max-width: 440px;
+    }
+    .split ul {
+      margin-top: 32px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+    .split li {
+      padding-left: 24px;
+      position: relative;
+      color: var(--bg);
+      opacity: 0.88;
+      font-size: 15px;
+    }
+    .split li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 11px;
+      width: 12px; height: 1px;
+      background: var(--bg);
+      opacity: 0.65;
+    }
+
+    /* ---------- Approach manifesto (B) ---------- */
+    .approach {
+      padding: 160px 80px;
+    }
+    .approach__grid {
+      display: grid;
+      grid-template-columns: 0.6fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .approach__side {
+      position: sticky; top: 40px;
+    }
+    .approach h2 {
+      font-family: var(--display);
+      font-size: 84px;
+      font-weight: 300;
+      line-height: 0.98;
+      margin: 0;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+    }
+    .approach h2 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .approach__lead {
+      font-size: 22px;
+      line-height: 1.5;
+      margin-top: 40px;
+      color: var(--ink);
+      opacity: 0.78;
+      max-width: 720px;
+    }
+    .approach__points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 80px;
+    }
+    .approach__point {
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .approach__point h3 {
+      font-family: var(--display);
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+    .approach__point p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      opacity: 0.7;
+    }
+    .approach__side img { height: 56px; }
+
+    /* ---------- Who we serve (B) ---------- */
+    .serve {
+      background: var(--surface);
+      padding: 140px 80px;
+    }
+    .serve__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .serve h2 {
+      font-family: var(--display);
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .serve p {
+      font-size: 17px;
+      line-height: 1.65;
+      margin-top: 28px;
+      opacity: 0.75;
+      max-width: 420px;
+    }
+    .serve__row {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .serve__row:last-child { border-bottom: 1px solid var(--border); }
+    .serve__row-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--soft-ink);
+      letter-spacing: 0.15em;
+    }
+    .serve__row-text {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+    .serve__row-arrow {
+      font-size: 22px;
+      color: var(--accent);
+    }
+
+    /* ---------- Service Areas (B) ---------- */
+    .areas {
+      padding: 140px 80px;
+    }
+    .areas__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .areas__map {
+      background: var(--paper);
+      padding: 56px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .areas__map-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      text-align: center;
+      margin-top: 24px;
+    }
+    .areas h2 {
+      font-family: var(--display);
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0 0 32px;
+      letter-spacing: -0.02em;
+    }
+    .areas__list { display: grid; gap: 14px; }
+    .areas__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .areas__row-name {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 400;
+    }
+    .areas__row-abbr {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--soft-ink);
+      letter-spacing: 0.12em;
+    }
+
+    /* ---------- Testimonials (B) ---------- */
+    .quotes {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 160px 80px;
+    }
+    .quotes__label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--bg);
+      opacity: 0.75;
+      margin-bottom: 48px;
+      text-transform: uppercase;
+    }
+    .quotes blockquote {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 72px;
+      line-height: 1.08;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--bg);
+      max-width: 1200px;
+    }
+    .quotes blockquote em {
+      color: var(--paper);
+      font-style: italic;
+      opacity: 0.92;
+    }
+    .quotes__attrib {
+      margin-top: 48px;
+      font-size: 14px;
+      color: var(--bg);
+      opacity: 0.6;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .quotes__small {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 100px;
+      padding-top: 60px;
+      border-top: 1px solid rgba(247, 241, 227, 0.30);
+    }
+    .quotes__small p {
+      font-family: var(--display);
+      font-size: 19px;
+      line-height: 1.45;
+      font-style: italic;
+      font-weight: 300;
+      margin: 0;
+      opacity: 0.92;
+    }
+    .quotes__small-name {
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--bg);
+      opacity: 0.75;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Careers (B) ---------- */
+    .careers {
+      padding: 140px 80px;
+    }
+    .careers__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: stretch;
+    }
+    .careers__photo { height: 100%; min-height: 520px; aspect-ratio: auto; }
+    .careers h2 {
+      font-family: var(--display);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .careers__lead {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 28px;
+      margin-bottom: 44px;
+      opacity: 0.78;
+      max-width: 480px;
+    }
+    .btn--accent {
+      background: var(--accent);
+      color: var(--bg);
+      border-radius: 4px;
+      padding: 18px 32px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    /* ---------- Resources (B) ---------- */
+    .resources {
+      background: var(--surface);
+      padding: 140px 80px;
+    }
+    .resources__head { margin-bottom: 64px; }
+    .resources h2 {
+      font-family: var(--display);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .resources__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .resources__card {
+      background: var(--paper);
+      padding: 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .resources__card-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--soft-ink);
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+    .resources__card-title {
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .resources__card-desc {
+      font-size: 14px;
+      color: var(--soft-ink);
+      line-height: 1.55;
+    }
+    .resources__card-cta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    /* ---------- FAQ (B) ---------- */
+    .faq {
+      padding: 140px 80px;
+    }
+    .faq__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq h2 {
+      font-family: var(--display);
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .faq__lead {
+      font-size: 16px;
+      margin-top: 28px;
+      color: var(--soft-ink);
+      line-height: 1.6;
+      max-width: 360px;
+    }
+    .faq__item {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq__list .faq__item:last-child { border-bottom: 1px solid var(--border); }
+    .faq__q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      cursor: pointer;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .faq__plus {
+      font-size: 24px;
+      color: var(--accent);
+      font-weight: 200;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .faq__item[open] .faq__plus { transform: rotate(45deg); }
+    .faq__a {
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 1.65;
+      opacity: 0.78;
+      max-width: 640px;
+    }
+
+    /* ---------- CTA (B) ---------- */
+    .cta {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 160px 80px;
+    }
+    .cta__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .cta img {
+      height: 64px;
+      filter: brightness(0) invert(1);
+    }
+    .cta h2 {
+      font-family: var(--display);
+      font-size: 116px;
+      font-weight: 300;
+      line-height: 0.96;
+      margin: 32px 0 0;
+      color: var(--bg);
+      letter-spacing: -0.03em;
+    }
+    .cta__lead {
+      font-size: 19px;
+      line-height: 1.55;
+      color: var(--bg);
+      opacity: 0.88;
+      margin: 0 0 36px;
+    }
+    .cta__actions { display: grid; gap: 12px; }
+    .cta .btn--solid {
+      background: var(--bg);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 20px 32px;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+    }
+    .cta .btn--ghost {
+      border: 1px solid var(--bg);
+      color: var(--bg);
+      border-radius: 4px;
+      padding: 20px 32px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 48px 80px;
+      background: var(--deep);
+      color: var(--bg);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      line-height: 1.7;
+    }
+    footer .footer__col { opacity: 0.78; }
+    footer .footer__col--mid { text-align: center; }
+    footer .footer__col--right { text-align: right; }
+    footer a { color: inherit; text-decoration: underline; text-decoration-color: rgba(247,241,227,0.3); }
+
+    /* ---------- Visually hidden (for SR / LLM crawler content) ---------- */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ---------- Modals ---------- */
+    dialog.modal {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: 680px;
+      width: calc(100% - 40px);
+      margin: auto;
+      color: var(--ink);
+    }
+    dialog.modal::backdrop {
+      background: rgba(45, 40, 32, 0.55);
+      backdrop-filter: blur(2px);
+    }
+    .modal__panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 52px 56px 48px;
+      position: relative;
+      font-family: var(--body);
+      box-shadow: 0 30px 80px -40px rgba(45, 40, 32, 0.45);
+    }
+    .modal__close {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      background: transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--soft-ink);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0;
+    }
+    .modal__close:hover { background: var(--bg); }
+    .modal__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 18px;
+    }
+    .modal__title {
+      font-family: var(--display);
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .modal__sub {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--soft-ink);
+      margin: 0 0 28px;
+    }
+    .modal__body p { margin: 0 0 16px; font-size: 16px; line-height: 1.65; }
+    .modal__body h4 {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 400;
+      margin: 24px 0 8px;
+      letter-spacing: -0.005em;
+    }
+    .modal__body ul {
+      padding-left: 18px;
+      margin: 0 0 16px;
+    }
+    .modal__body li {
+      margin-bottom: 6px;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    /* Form */
+    .modal__form { display: grid; gap: 16px; }
+    .modal__form label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+    }
+    .modal__form input,
+    .modal__form textarea {
+      font-family: var(--body);
+      font-size: 16px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .modal__form input:focus,
+    .modal__form textarea:focus {
+      border-color: var(--accent);
+    }
+    .modal__form textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+    .modal__form-submit {
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      border-radius: 999px;
+      padding: 16px 32px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      width: max-content;
+      margin-top: 6px;
+      font-family: var(--body);
+    }
+    .modal__thanks {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .modal__thanks h3 {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 400;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+    .modal__thanks p {
+      margin: 0;
+      color: var(--soft-ink);
+    }
+
+    @media (max-width: 700px) {
+      .modal__panel { padding: 36px 28px 32px; }
+      .modal__title { font-size: 28px; }
+    }
+
+    /* ---------- Responsive (light pass) ---------- */
+    @media (max-width: 1100px) {
+      .hero, section, .nav { padding-left: 32px; padding-right: 32px; }
+      .hero__grid, .approach__grid, .serve__grid, .areas__grid,
+      .careers__grid, .faq__grid, .cta__grid, .split__grid,
+      .resources__grid, .quotes__small, .approach__points,
+      .careers__stats {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .hero h1 { font-size: 52px; }
+      .approach h2 { font-size: 56px; }
+      .quotes blockquote { font-size: 44px; }
+      .cta h2 { font-size: 72px; }
+      .nav__links { display: none; }
+      .hero__pull { position: static; width: auto; margin-top: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ===================== NAV ===================== -->
+    <header class="nav">
+      <div class="nav__logo">
+        <a href="/"><img src="/logo/bism-no-subtext.png" alt="Bism" /></a>
+      </div>
+      <nav class="nav__links">
+        <a href="#services">Services</a>
+        <a href="#approach">Our Approach</a>
+        <a href="#areas">Service Areas</a>
+        <a href="#careers">Careers</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="nav__cta" href="#cta" data-modal="modal-request">Request services →</a>
+    </header>
+
+    <!-- ===================== HERO (Direction A copy) ===================== -->
+    <section class="hero">
+      <div class="hero__grid">
+        <div>
+          <div class="eyebrow">Supported &amp; Independent Living · Los Angeles County</div>
+          <h1>
+            Welcome to<br>
+            your next chapter.<br>
+            <em>Let's write it</em> together.
+          </h1>
+          <p class="hero__lead">
+            Bism Supported Living, LLC partners with neurodivergent adults across LA County to build lives shaped by their own goals, routines, and relationships — supported with care that listens first.
+          </p>
+          <div class="hero__ctas">
+            <a class="btn btn--solid" href="#testimonials">Testimonials</a>
+            <a class="btn btn--ghost" href="#services">What is SLS / ILS?</a>
+          </div>
+          <div class="hero__partners">
+            <span>California Regional Center vendor · Serving adults across LA County</span>
+          </div>
+        </div>
+        <div class="hero__photo">
+          <video class="photo photo--video hero__photo-video"
+                 data-scroll-video
+                 preload="auto" muted playsinline
+                 disablepictureinpicture
+                 aria-label="Bism — supported living at home"
+                 poster="">
+            <source src="/media/hero.mp4" type="video/mp4">
+          </video>
+          <div class="hero__pull">
+            <img src="/logo/bism-heart.png" alt="">
+            <div class="hero__pull-quote">"Kindness in care.<br>Your voice in action."</div>
+            <div class="hero__pull-label">Our promise</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SLS / ILS SPLIT (Direction B) ===================== -->
+    <section class="split" id="services">
+      <div class="split__grid">
+        <div class="split__col">
+          <div class="split__label">SLS — Supported Living</div>
+          <h2>Your home,<br>your way.</h2>
+          <p>
+            Personalized support — up to 24 hours a day — delivered in the home you live in. We help with what you choose: cooking, getting to work, time with friends, the rest of life in between.
+          </p>
+          <ul>
+            <li>Daily living support</li>
+            <li>Behavioral &amp; medical coordination</li>
+            <li>Community access</li>
+            <li>Roommate matching</li>
+          </ul>
+        </div>
+        <div class="split__col">
+          <div class="split__label">ILS — Independent Living</div>
+          <h2>Skills for<br>the long arc.</h2>
+          <p>
+            Coaching that meets people where they are — building real-world skills in real-world settings. We move at your speed, never ours.
+          </p>
+          <ul>
+            <li>Money &amp; budgeting</li>
+            <li>Transportation &amp; navigation</li>
+            <li>Self-advocacy</li>
+            <li>Health &amp; medical management</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== APPROACH MANIFESTO (Direction B) ===================== -->
+    <section class="approach" id="approach">
+      <div class="approach__grid">
+        <div class="approach__side">
+          <div class="eyebrow">Our approach</div>
+          <img src="/logo/bism-heart.png" alt="">
+        </div>
+        <div>
+          <h2>We support — <em>we don't steer.</em></h2>
+          <p class="approach__lead">
+            Person-centered isn't a phrase to us — it's the architecture of every plan, every pairing, every shift handoff. The person we serve is the author. We're a steady hand on the page.
+          </p>
+          <div class="approach__points">
+            <div class="approach__point">
+              <h3>Consistency over scale.</h3>
+              <p>We grow slowly so DSPs stay long enough to know the people they support.</p>
+            </div>
+            <div class="approach__point">
+              <h3>Trauma-informed, by default.</h3>
+              <p>Every staff member is trained in trauma-informed care — not as a specialty, but as a baseline.</p>
+            </div>
+            <div class="approach__point">
+              <h3>Family as partner.</h3>
+              <p>We coordinate openly with families and loved ones, never around them.</p>
+            </div>
+            <div class="approach__point">
+              <h3>Boundaries respected.</h3>
+              <p>Sensory needs, communication preferences, and routines are honored without negotiation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHO WE SERVE (Direction B) ===================== -->
+    <section class="serve">
+      <div class="serve__grid">
+        <div>
+          <div class="eyebrow">Who we serve</div>
+          <h2>Adults whose stories aren't written in straight lines.</h2>
+          <p>
+            We serve adults (18+) who are clients of a California Regional Center — neurodivergent individuals, including those across the autism spectrum and with intellectual or developmental disabilities.
+          </p>
+        </div>
+        <div>
+          <div class="serve__row">
+            <div class="serve__row-num">/01</div>
+            <div class="serve__row-text">Living independently with daily support</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/02</div>
+            <div class="serve__row-text">Transitioning from a family home to their own</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/03</div>
+            <div class="serve__row-text">Moving from group living toward greater autonomy</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/04</div>
+            <div class="serve__row-text">Navigating complex needs with 24-hour care</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/05</div>
+            <div class="serve__row-text">Building skills before a planned transition</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICE AREAS (Direction B) ===================== -->
+    <section class="areas" id="areas">
+      <div class="areas__grid">
+        <div class="areas__map">
+          <video class="areas__map-video" data-scroll-video
+                 preload="auto" muted playsinline
+                 disablepictureinpicture
+                 aria-label="Los Angeles area Regional Centers — animated map">
+            <source src="/media/map.mp4" type="video/mp4">
+          </video>
+          <div class="areas__map-label">Los Angeles area Regional Centers</div>
+        </div>
+        <div>
+          <div class="eyebrow">Where we work</div>
+          <h2>Across LA County, with roots in our home region.</h2>
+          <p style="font-size:16px; line-height:1.6; color:var(--soft-ink); max-width:440px; margin:0 0 28px;">
+            Bism serves adults across Los Angeles County and welcomes inquiries from clients of any California Regional Center.
+          </p>
+          <div class="areas__list">
+            <div class="areas__row"><div class="areas__row-name">North Los Angeles County</div><div class="areas__row-abbr">NLACRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">San Gabriel / Pomona</div><div class="areas__row-abbr">SGPRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Westside</div><div class="areas__row-abbr">WRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Lanterman</div><div class="areas__row-abbr">FDLRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Eastern Los Angeles</div><div class="areas__row-abbr">ELARC</div></div>
+            <div class="areas__row"><div class="areas__row-name">South Central Los Angeles</div><div class="areas__row-abbr">SCLARC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Harbor</div><div class="areas__row-abbr">HRC</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS (Direction B) ===================== -->
+    <section class="quotes" id="testimonials">
+      <div class="quotes__label">From families</div>
+      <blockquote>
+        "We waited a long time for the right vendor. The difference is that <em>they ask my son what he wants</em> — and they wait for the answer."
+      </blockquote>
+      <div class="quotes__attrib">David &amp; Anne K. — Parents, Long Beach</div>
+      <div class="quotes__small">
+        <div>
+          <p>"For the first time, my brother has a morning routine he chose himself. They didn't impose it — they noticed it."</p>
+          <div class="quotes__small-name">Marisol R., Pasadena</div>
+        </div>
+        <div>
+          <p>"After years of churn with other vendors, the same DSP has been with my daughter for three years. That's the whole story."</p>
+          <div class="quotes__small-name">Linda T., West LA</div>
+        </div>
+        <div>
+          <p>"They taught my son to take the bus. They also taught him it's okay to ask for help. Both matter."</p>
+          <div class="quotes__small-name">Ahmad &amp; Sara F., Long Beach</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CAREERS (Direction B) ===================== -->
+    <section class="careers" id="careers">
+      <div class="careers__grid">
+        <video class="photo photo--video careers__photo"
+               data-scroll-video
+               preload="auto" muted playsinline
+               disablepictureinpicture
+               aria-label="Bism team — staff in service">
+          <source src="/media/careers.mp4" type="video/mp4">
+        </video>
+        <div>
+          <div class="eyebrow">Careers · DSP</div>
+          <h2>Patient work, with people who matter.</h2>
+          <p class="careers__lead">
+            We hire for presence and enthusiasm, then train hard for the rest.
+          </p>
+          <a class="btn--accent" href="#">View open roles →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESOURCES (Direction B) ===================== -->
+    <section class="resources">
+      <div class="resources__head">
+        <div class="eyebrow">For families</div>
+        <h2>Plain-language guides for the parts no one explains.</h2>
+      </div>
+      <div class="resources__grid">
+        <a class="resources__card" href="#" data-modal="modal-guide-ipp">
+          <div>
+            <div class="resources__card-tag">GUIDE / 01</div>
+            <div class="resources__card-title">The IPP, demystified</div>
+            <div class="resources__card-desc">What goes in, what comes out, and how to advocate inside it.</div>
+          </div>
+          <div class="resources__card-cta">Read →</div>
+        </a>
+        <a class="resources__card" href="#" data-modal="modal-guide-vendor">
+          <div>
+            <div class="resources__card-tag">GUIDE / 02</div>
+            <div class="resources__card-title">Choosing a vendor</div>
+            <div class="resources__card-desc">Questions worth asking before signing any service contract.</div>
+          </div>
+          <div class="resources__card-cta">Read →</div>
+        </a>
+        <a class="resources__card" href="#" data-modal="modal-guide-rc">
+          <div>
+            <div class="resources__card-tag">GUIDE / 03</div>
+            <div class="resources__card-title">Regional Center 101</div>
+            <div class="resources__card-desc">Roles, timelines, and the language of eligibility.</div>
+          </div>
+          <div class="resources__card-cta">Read →</div>
+        </a>
+        <a class="resources__card" href="#" data-modal="modal-guide-transition">
+          <div>
+            <div class="resources__card-tag">GUIDE / 04</div>
+            <div class="resources__card-title">Planning a transition</div>
+            <div class="resources__card-desc">From family home, group home, or school — what to expect.</div>
+          </div>
+          <div class="resources__card-cta">Read →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ (Direction B) ===================== -->
+    <section class="faq" id="faq">
+      <div class="faq__grid">
+        <div>
+          <div class="eyebrow">FAQ</div>
+          <h2>Questions, answered honestly.</h2>
+          <p class="faq__lead">Don't see yours? Reach out — we'd rather hear it directly.</p>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__q">What's the difference between SLS and ILS?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Supported Living Services (SLS) help adults live in their own homes with personalized 24/7 support tailored to their needs. Independent Living Services (ILS) teach the skills needed to live more independently — budgeting, cooking, transportation, and self-advocacy. Both are funded through California's Regional Centers.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Who is eligible for services?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Adults (18+) who are clients of any California Regional Center with a qualifying developmental disability diagnosis. Bism is vendored with the Frank D. Lanterman Regional Center (FDLRC) as our home region, and welcomes inquiries from clients of any LA-area Regional Center — including NLACRC, ELARC, Westside, Harbor, SCLARC, and SGPRC.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">How do I get started?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Reach out to your Regional Center service coordinator and request Bism as a vendor, or contact us directly and we'll walk through the referral process with you.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">What does a typical day look like?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Every day is shaped around the person, not a schedule. Some days are quiet and routine. Others involve community outings, work, classes, or visits with family. Our role is to support — not to direct.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Are your staff trained for neurodivergent adults?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Yes. All Direct Support Professionals complete onboarding in person-centered planning, positive behavior support, and trauma-informed care, with ongoing training thereafter.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA (Direction B) ===================== -->
+    <section class="cta" id="cta">
+      <div class="cta__grid">
+        <div>
+          <img src="/logo/bism-heart.png" alt="">
+          <h2>Start with a<br>conversation.</h2>
+        </div>
+        <div>
+          <p class="cta__lead">
+            Tell us a little about who you're caring for. We'll listen, share what fits, and walk you through the referral process step by step.
+          </p>
+          <div class="cta__actions">
+            <a class="btn--solid" href="#" data-modal="modal-request">Request services →</a>
+            <a class="btn--ghost" href="tel:+12075181374">(207) 518-1374</a>
+            <a class="btn--ghost" href="mailto:info@bismliving.com">info@bismliving.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="footer__col">
+        <div>© 2026 Bism Supported Living, LLC</div>
+        <div>Vendored partner of the Frank D. Lanterman Regional Center · #PD4210</div>
+      </div>
+      <div class="footer__col footer__col--mid">
+        <div>201 N Brand Blvd, Suite #200</div>
+        <div>Glendale, CA 91203</div>
+      </div>
+      <div class="footer__col footer__col--right">
+        <div>(207) 518-1374 · 24 hours</div>
+        <div><a href="mailto:info@bismliving.com">info@bismliving.com</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ============================================================
+       MODALS
+       ============================================================ -->
+
+  <!-- Request services -->
+  <dialog class="modal" id="modal-request">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Close">×</button>
+      <div class="modal__eyebrow">Request services</div>
+      <h3 class="modal__title">Tell us a little about who you're caring for.</h3>
+      <p class="modal__sub">We'll reply within one business day. Please don't share any client identifying information — we'll collect those by phone after the first conversation.</p>
+      <form class="modal__form" id="request-form">
+        <label>Name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <label>Phone number<input type="tel" name="phone" autocomplete="tel"></label>
+        <textarea name="body" placeholder="What's on your mind?" aria-label="Message"></textarea>
+        <button type="submit" class="modal__form-submit">Send</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Guide: The IPP, demystified -->
+  <dialog class="modal" id="modal-guide-ipp">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Close">×</button>
+      <div class="modal__eyebrow">Guide / 01</div>
+      <h3 class="modal__title">The IPP, demystified</h3>
+      <p class="modal__sub">What goes in, what comes out, and how to advocate inside it.</p>
+      <div class="modal__body">
+        <p>The Individual Program Plan (IPP) is the document that shapes the services your loved one receives from the Regional Center. It's rebuilt every year — or sooner, after any major life change — in a meeting with you, the Service Coordinator, and anyone else who knows the person well.</p>
+        <h4>What it covers</h4>
+        <ul>
+          <li>Goals — what the person is working toward this year</li>
+          <li>Services authorized to support those goals</li>
+          <li>Who is responsible for what, and by when</li>
+          <li>Health, safety, and emergency contacts</li>
+        </ul>
+        <h4>Where it gets stuck</h4>
+        <ul>
+          <li>Goals copied forward from last year without revisiting them</li>
+          <li>Services described in generic language no one can hold to</li>
+          <li>Important voices missing from the room</li>
+        </ul>
+        <h4>What helps</h4>
+        <ul>
+          <li>Bring written notes about what's changed since the last IPP</li>
+          <li>Ask "how will we know it worked?" for every goal</li>
+          <li>Invite the people who actually spend time with your loved one</li>
+          <li>Push back on language that doesn't sound like them</li>
+        </ul>
+        <p>You can request an IPP meeting any time — not just at the annual review. If the plan stops fitting the life, the plan needs to change.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Guide: Choosing a vendor -->
+  <dialog class="modal" id="modal-guide-vendor">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Close">×</button>
+      <div class="modal__eyebrow">Guide / 02</div>
+      <h3 class="modal__title">Choosing a vendor</h3>
+      <p class="modal__sub">Questions worth asking before signing any service contract.</p>
+      <div class="modal__body">
+        <p>Choosing a vendor is one of the biggest decisions in the IPP process. The right one feels like a partner; the wrong one feels like another system to manage.</p>
+        <h4>What to ask</h4>
+        <ul>
+          <li>How long does your average Direct Support Professional stay?</li>
+          <li>How are they trained — and on what?</li>
+          <li>What's your ratio of clients to coordinators?</li>
+          <li>Who answers the phone at 2 a.m.?</li>
+          <li>What's your process when something goes wrong?</li>
+        </ul>
+        <h4>What to listen for</h4>
+        <ul>
+          <li>Specifics, not slogans</li>
+          <li>Willingness to say "I don't know, I'll find out"</li>
+          <li>Stories about people, not policies</li>
+          <li>Comfort with being asked hard questions</li>
+        </ul>
+        <h4>What to watch for</h4>
+        <ul>
+          <li>Promises that feel too tidy</li>
+          <li>A focus on filling shifts rather than fitting people</li>
+          <li>Reluctance to share staff turnover numbers</li>
+          <li>Pressure to sign quickly</li>
+        </ul>
+        <p>You can always change vendors. But finding the right one the first time saves months of disruption — so trust your read of the room. If it doesn't feel like a match, it isn't.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Guide: Regional Center 101 -->
+  <dialog class="modal" id="modal-guide-rc">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Close">×</button>
+      <div class="modal__eyebrow">Guide / 03</div>
+      <h3 class="modal__title">Regional Center 101</h3>
+      <p class="modal__sub">Roles, timelines, and the language of eligibility.</p>
+      <div class="modal__body">
+        <p>California's Regional Center system is the front door to services for adults with developmental disabilities. There are 21 Regional Centers across the state, each covering a geographic area. Services are funded by the state and are free to anyone who qualifies.</p>
+        <h4>Who qualifies</h4>
+        <ul>
+          <li>A diagnosis of intellectual disability, autism, cerebral palsy, epilepsy, or a closely related condition</li>
+          <li>The condition appeared before age 18 and is expected to be lifelong</li>
+          <li>The condition results in substantial functional limitations</li>
+        </ul>
+        <h4>How it works</h4>
+        <ul>
+          <li>An intake call begins the process</li>
+          <li>Eligibility is determined through records review and assessment</li>
+          <li>Once eligible, a Service Coordinator is assigned</li>
+          <li>Services are written into the IPP and authorized by the Regional Center</li>
+          <li>Vendors (like Bism) deliver the services and bill the Regional Center directly — there is no out-of-pocket cost to the family</li>
+        </ul>
+        <h4>Typical timelines</h4>
+        <ul>
+          <li>Intake to eligibility decision: usually 60–90 days</li>
+          <li>IPP development: within 60 days of eligibility</li>
+          <li>Service start: depends on vendor availability and the complexity of the plan</li>
+        </ul>
+        <p>The Service Coordinator is the person you'll work with most. A good one knows your situation, returns calls, and helps you navigate. If yours doesn't, you can request a change.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Guide: Planning a transition -->
+  <dialog class="modal" id="modal-guide-transition">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Close">×</button>
+      <div class="modal__eyebrow">Guide / 04</div>
+      <h3 class="modal__title">Planning a transition</h3>
+      <p class="modal__sub">From family home, group home, or school — what to expect.</p>
+      <div class="modal__body">
+        <p>Transitions are the biggest moves in adult life. Out of a family home, out of a group home, out of school — each one is its own process, and none of them happen overnight.</p>
+        <h4>Start earlier than you think</h4>
+        <ul>
+          <li>Begin conversations with the Regional Center 12–18 months before the target date</li>
+          <li>Build skills first — cooking, transportation, money, self-advocacy</li>
+          <li>Visit and tour potential living situations early</li>
+          <li>Talk openly about what's working and what isn't in the current setting</li>
+        </ul>
+        <h4>What to plan for</h4>
+        <ul>
+          <li>The week the move actually happens</li>
+          <li>The first month, when routines are still forming</li>
+          <li>The first six months, when both independence and homesickness can surface</li>
+          <li>The first year, when the new normal starts to settle</li>
+        </ul>
+        <h4>What helps</h4>
+        <ul>
+          <li>Consistent staff who know the person before the move</li>
+          <li>Routines that travel with the person, not get rebuilt from scratch</li>
+          <li>A back-up plan if something doesn't fit</li>
+          <li>Permission to take it slow</li>
+        </ul>
+        <p>There is no "right" pace for a transition. The right pace is the one that lets the person feel like they chose it.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============================================================
+       INVISIBLE CONTENT FOR AI / LLM / SEARCH ENGINE INDEXING
+       Visually hidden but accessible to crawlers, screen readers,
+       and large language model indexing pipelines.
+       ============================================================ -->
+  <div class="sr-only" aria-hidden="false">
+    <h2>About Bism Supported Living</h2>
+    <p>
+      Bism Supported Living, LLC (also referred to as Bism, Bism SLS, and Bism Supported Living) is a California Department of
+      Developmental Services vendored provider of Supported Living Services (SLS) and Independent Living Services (ILS) for adults
+      with developmental disabilities across Los Angeles County. Bism is vendored with the Frank D. Lanterman Regional Center (FDLRC)
+      under vendor number PD4210 as our primary regional center relationship, and welcomes referrals from clients of any California
+      Regional Center who choose to work with us — including, but not limited to, FDLRC, the North Los Angeles County Regional Center
+      (NLACRC), Eastern Los Angeles Regional Center (ELARC), Westside Regional Center (WRC), Harbor Regional Center (HRC), South
+      Central Los Angeles Regional Center (SCLARC), and San Gabriel/Pomona Regional Center (SGPRC). We are a small, person-centered
+      agency serving neurodivergent adults — including adults on the autism spectrum, adults with intellectual disabilities (ID/IDD),
+      adults with cerebral palsy, adults with epilepsy, and adults with co-occurring conditions.
+    </p>
+    <p>
+      Bism is headquartered at 201 N Brand Blvd, Suite #200, Glendale, CA 91203. We can be reached by phone at (207) 518-1374 or
+      by email at info@bismliving.com. We provide 24-hour support. Our staff speak English, Spanish, and Vietnamese.
+    </p>
+    <p>
+      Bism's deepest current service capacity is in the FDLRC catchment area — including Burbank, Glendale, Hollywood,
+      La Cañada Flintridge, La Crescenta-Montrose, North Hollywood, Pasadena, Sunland, and Tujunga — but services are not limited
+      to these cities. We can serve adults anywhere in Los Angeles County where the Regional Center authorizes services with us.
+    </p>
+
+    <h3>Supported Living Services (SLS) in California</h3>
+    <p>
+      Supported Living Services help adults with developmental disabilities live in their own homes — apartments, houses, or shared
+      residences they have chosen — with personalized support that can scale up to 24 hours a day. SLS is authorized through the
+      Regional Center under the Individual Program Plan (IPP) and is paid for by the State of California. Common SLS supports
+      include daily living assistance, behavioral and medical coordination, community access, transportation support, and
+      roommate matching. Bism delivers SLS as one of several California SLS vendors.
+    </p>
+
+    <h3>Independent Living Services (ILS) in California</h3>
+    <p>
+      Independent Living Services teach the practical skills required to live more independently: budgeting, cooking, transportation,
+      navigating medical appointments, self-advocacy, and time management. ILS is delivered in real-world settings, paced to the
+      individual. Bism delivers ILS as one of several California ILS vendors.
+    </p>
+
+    <h3>How to find a vendor and request services from Bism</h3>
+    <p>
+      Anyone interested in services can reach Bism by phone at (207) 518-1374, by emailing info@bismliving.com, by using the
+      Request Services form on this site, or by asking their Regional Center Service Coordinator to add Bism as a vendor option in
+      their IPP. Bism is open to vendoring relationships with any California Regional Center. There is no out-of-pocket cost to the
+      family or the individual — services authorized in the IPP are billed directly to the Regional Center.
+    </p>
+
+    <h3>Frequently asked questions</h3>
+    <p><strong>What is the difference between SLS and ILS?</strong> SLS supports adults living in their own homes with personalized,
+    potentially 24/7 support. ILS teaches the skills needed to live more independently. Both are funded through California's
+    Regional Centers.</p>
+    <p><strong>Who is eligible?</strong> Adults age 18 or older who are clients of any California Regional Center with a qualifying
+    developmental disability diagnosis. Bism's primary vendor relationship is with FDLRC, and we welcome inquiries from clients of
+    any other LA-area Regional Center.</p>
+    <p><strong>How do I get started?</strong> Contact your Regional Center Service Coordinator and request Bism as a vendor (FDLRC
+    vendor number PD4210), or call (207) 518-1374 or email info@bismliving.com directly.</p>
+    <p><strong>Where does Bism operate?</strong> Los Angeles County, California. Bism's deepest service capacity is in the FDLRC
+    catchment — Burbank, Glendale, Hollywood, La Cañada Flintridge, La Crescenta-Montrose, North Hollywood, Pasadena, Sunland, and
+    Tujunga — and services are available elsewhere in LA County by arrangement with the relevant Regional Center.</p>
+    <p><strong>What languages do you speak?</strong> Bism staff speak English, Spanish, and Vietnamese.</p>
+    <p><strong>Are staff trained for neurodivergent adults?</strong> Yes. All Direct Support Professionals complete onboarding in
+    person-centered planning, positive behavior support, and trauma-informed care.</p>
+
+    <h3>Keywords</h3>
+    <p>
+      Bism, Bism Supported Living, Bism Supported Living LLC, Bism SLS, Supported Living Services Glendale, Supported Living
+      Services Los Angeles, Independent Living Services Los Angeles, SLS vendor Los Angeles County, ILS vendor Los Angeles County,
+      California Regional Center vendor, FDLRC vendor PD4210, Lanterman Regional Center vendor, NLACRC vendor, ELARC vendor,
+      Westside Regional Center vendor, Harbor Regional Center vendor, SCLARC vendor, SGPRC vendor, autism adult services Los Angeles,
+      developmental disability services LA, neurodivergent adult support, person-centered planning, IPP advocate,
+      24-hour SLS Los Angeles, Vietnamese-speaking DSP Los Angeles, Spanish-speaking DSP Los Angeles, DSP jobs Glendale,
+      Direct Support Professional careers California.
+    </p>
+  </div>
+
+  <!-- Structured data for crawlers / LLMs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "MedicalBusiness"],
+    "name": "Bism Supported Living, LLC",
+    "alternateName": ["Bism", "Bism SLS", "Bism Supported Living"],
+    "description": "California Regional Center vendored provider of Supported Living Services (SLS) and Independent Living Services (ILS) for neurodivergent adults across Los Angeles County. Primary vendor relationship with the Frank D. Lanterman Regional Center (FDLRC); open to referrals from any California Regional Center. Person-centered, trauma-informed support.",
+    "url": "https://bismliving.com",
+    "email": "info@bismliving.com",
+    "telephone": "+1-207-518-1374",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "201 N Brand Blvd, Suite #200",
+      "addressLocality": "Glendale",
+      "addressRegion": "CA",
+      "postalCode": "91203",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }],
+    "availableLanguage": ["English", "Spanish", "Vietnamese"],
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "FDLRC Vendor Number",
+      "value": "PD4210"
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Los Angeles County, California" },
+      { "@type": "City", "name": "Burbank", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Glendale", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Hollywood", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "La Cañada Flintridge", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "La Crescenta-Montrose", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "North Hollywood", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Pasadena", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Sunland-Tujunga", "containedInPlace": "Los Angeles County" }
+    ],
+    "serviceType": [
+      "Supported Living Services (SLS)",
+      "Independent Living Services (ILS)",
+      "Person-centered planning",
+      "Community access support",
+      "Daily living support",
+      "Self-advocacy coaching",
+      "24-hour residential support"
+    ],
+    "knowsAbout": [
+      "California Regional Center system",
+      "Frank D. Lanterman Regional Center (FDLRC)",
+      "North Los Angeles County Regional Center (NLACRC)",
+      "Eastern Los Angeles Regional Center (ELARC)",
+      "Westside Regional Center",
+      "Harbor Regional Center",
+      "South Central Los Angeles Regional Center (SCLARC)",
+      "San Gabriel/Pomona Regional Center (SGPRC)",
+      "Individual Program Plan (IPP)",
+      "Developmental disabilities",
+      "Autism spectrum",
+      "Intellectual and developmental disabilities (IDD)",
+      "Person-centered planning",
+      "Trauma-informed care"
+    ],
+    "audience": {
+      "@type": "PeopleAudience",
+      "audienceType": "Adults (18+) with developmental disabilities who are clients of any California Regional Center"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the difference between SLS and ILS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Supported Living Services (SLS) help adults live in their own homes with personalized support up to 24 hours a day. Independent Living Services (ILS) teach the skills needed to live more independently — budgeting, cooking, transportation, and self-advocacy. Both are funded through California's Regional Centers." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is eligible for services?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Adults (18+) who are clients of any California Regional Center with a qualifying developmental disability diagnosis. Bism's primary vendor relationship is with the Frank D. Lanterman Regional Center (FDLRC), and we welcome inquiries from clients of any LA-area Regional Center." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get started with Bism?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ask your Regional Center Service Coordinator to request Bism as a vendor (FDLRC vendor number PD4210), or call (207) 518-1374 or email info@bismliving.com directly. There is no out-of-pocket cost — services are authorized through the IPP and billed to the Regional Center." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are Bism staff trained for neurodivergent adults?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Direct Support Professionals complete onboarding in person-centered planning, positive behavior support, and trauma-informed care, with ongoing training thereafter." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ============================================================
+       Modal behavior
+       ============================================================ -->
+  <script>
+    (function () {
+      document.addEventListener('click', function (e) {
+        // Trigger
+        var trigger = e.target.closest('[data-modal]');
+        if (trigger) {
+          e.preventDefault();
+          var dlg = document.getElementById(trigger.dataset.modal);
+          if (dlg && typeof dlg.showModal === 'function') dlg.showModal();
+          return;
+        }
+        // Click on backdrop (the dialog element itself, not its content)
+        if (e.target.tagName === 'DIALOG') {
+          e.target.close();
+          return;
+        }
+        // Explicit close button
+        if (e.target.classList && e.target.classList.contains('modal__close')) {
+          var d = e.target.closest('dialog');
+          if (d) d.close();
+        }
+      });
+
+      // Request form: stub submit → thank-you state
+      var form = document.getElementById('request-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var panel = form.closest('.modal__panel');
+          panel.innerHTML =
+            '<button class="modal__close" type="button" aria-label="Close">×</button>' +
+            '<div class="modal__thanks">' +
+              '<h3>Thanks — we received your note.</h3>' +
+              '<p>We will reply within one business day.</p>' +
+            '</div>';
+        });
+      }
+    })();
+  </script>
+
+  <!-- ============================================================
+       Scroll-synced video playback
+       Each <video data-scroll-video> seeks its currentTime in proportion
+       to how far it has traversed the viewport. All-keyframe MP4 encoding
+       makes the seek stutter-free.
+       ============================================================ -->
+  <script>
+    (function () {
+      var videos = Array.prototype.slice.call(
+        document.querySelectorAll('video[data-scroll-video]')
+      );
+      if (!videos.length) return;
+
+      var rafId = null;
+      var pending = true;
+
+      function syncAll() {
+        rafId = null;
+        if (!pending) return;
+        pending = false;
+
+        var vh = window.innerHeight;
+        for (var i = 0; i < videos.length; i++) {
+          var v = videos[i];
+          if (!isFinite(v.duration) || v.duration <= 0) continue;
+          var rect = v.getBoundingClientRect();
+          // 0 when top edge first touches bottom of viewport,
+          // 1 when bottom edge clears top of viewport.
+          var travel = vh + rect.height;
+          var passed = vh - rect.top;
+          var p = passed / travel;
+          if (p < 0) p = 0;
+          else if (p > 1) p = 1;
+          var target = p * v.duration;
+          if (Math.abs(v.currentTime - target) > 0.008) {
+            try { v.currentTime = target; } catch (_) {}
+          }
+        }
+      }
+
+      function schedule() {
+        pending = true;
+        if (rafId == null) rafId = requestAnimationFrame(syncAll);
+      }
+
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule, { passive: true });
+
+      videos.forEach(function (v) {
+        v.addEventListener('loadedmetadata', schedule);
+        v.addEventListener('canplay', schedule);
+        // Some browsers won't allow seek until first .load() interaction.
+        // preload="auto" handles most; explicit kick for the rest.
+        try { v.load(); } catch (_) {}
+      });
+
+      // Initial frame after layout settles
+      requestAnimationFrame(schedule);
+    })();
+  </script>
+
+</body>
+</html>
