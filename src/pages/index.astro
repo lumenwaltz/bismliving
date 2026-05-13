@@ -944,6 +944,34 @@
       width: max-content;
       margin-top: 6px;
       font-family: var(--body);
+      transition: opacity 0.15s;
+    }
+    .modal__form-submit:disabled {
+      opacity: 0.55;
+      cursor: progress;
+    }
+    /* Honeypot — visually hidden, kept focusable-off so bots auto-fill but humans don't see it */
+    .modal__form-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .modal__form-error {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--warm);
+      background: rgba(196, 122, 79, 0.10);
+      border: 1px solid rgba(196, 122, 79, 0.45);
+      padding: 12px 14px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+    .modal__form-error a {
+      color: var(--warm);
+      text-decoration: underline;
     }
     .modal__thanks {
       text-align: center;
@@ -1351,11 +1379,13 @@
       <div class="modal__eyebrow">Request services</div>
       <h3 class="modal__title">Tell us a little about who you're caring for.</h3>
       <p class="modal__sub">We'll reply within one business day. Please don't share any client identifying information — we'll collect those by phone after the first conversation.</p>
-      <form class="modal__form" id="request-form">
+      <form class="modal__form" id="request-form" novalidate>
         <label>Name<input type="text" name="name" autocomplete="name" required></label>
         <label>Email<input type="email" name="email" autocomplete="email" required></label>
         <label>Phone number<input type="tel" name="phone" autocomplete="tel"></label>
         <textarea name="body" placeholder="What's on your mind?" aria-label="Message"></textarea>
+        <!-- Honeypot — hidden from humans, filled by bots; server treats as spam -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="modal__form-honeypot" aria-hidden="true">
         <button type="submit" class="modal__form-submit">Send</button>
       </form>
     </div>
@@ -1708,19 +1738,86 @@
         }
       });
 
-      // Request form: stub submit → thank-you state
+      // Request form: POST to /api/contact (Cloudflare Pages Function → Resend)
       var form = document.getElementById('request-form');
       if (form) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
-          var panel = form.closest('.modal__panel');
-          panel.innerHTML =
-            '<button class="modal__close" type="button" aria-label="Close">×</button>' +
-            '<div class="modal__thanks">' +
-              '<h3>Thanks — we received your note.</h3>' +
-              '<p>We will reply within one business day.</p>' +
-            '</div>';
+          submitRequestForm(form);
         });
+      }
+
+      function submitRequestForm(form) {
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var originalLabel = submitBtn.textContent;
+        var oldError = form.querySelector('.modal__form-error');
+        if (oldError) oldError.remove();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        var payload = {
+          name:    form.elements.namedItem('name').value,
+          email:   form.elements.namedItem('email').value,
+          phone:   form.elements.namedItem('phone').value,
+          body:    form.elements.namedItem('body').value,
+          website: form.elements.namedItem('website').value
+        };
+
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          }).catch(function () {
+            return { ok: res.ok, data: {} };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            showThanks(form);
+          } else {
+            showFormError(form, submitBtn, originalLabel, result.data && result.data.error);
+          }
+        })
+        .catch(function () {
+          showFormError(form, submitBtn, originalLabel, null);
+        });
+      }
+
+      function showThanks(form) {
+        var panel = form.closest('.modal__panel');
+        panel.innerHTML =
+          '<button class="modal__close" type="button" aria-label="Close">×</button>' +
+          '<div class="modal__thanks">' +
+            '<h3>Thanks — we received your note.</h3>' +
+            '<p>We will reply within one business day.</p>' +
+          '</div>';
+      }
+
+      function showFormError(form, submitBtn, originalLabel, message) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+
+        var msg = message ||
+          'Something went wrong sending your message. ' +
+          'Please call (207) 518-1374 or email info@bismliving.com directly.';
+
+        var err = document.createElement('div');
+        err.className = 'modal__form-error';
+        err.setAttribute('role', 'alert');
+        err.innerHTML =
+          msg.replace(
+            /\(207\) 518-1374/,
+            '<a href="tel:+12075181374">(207) 518-1374</a>'
+          ).replace(
+            /info@bismliving\.com/,
+            '<a href="mailto:info@bismliving.com">info@bismliving.com</a>'
+          );
+        form.appendChild(err);
       }
     })();
   </script>
