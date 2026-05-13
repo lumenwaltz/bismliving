@@ -398,11 +398,17 @@
       height: auto;
       display: block;
       opacity: 0.85;
+      transition: filter 0.35s ease, opacity 0.2s ease;
+      will-change: transform, filter, opacity;
     }
     /* Approach heart starts under the "Our Approach" eyebrow */
     .heart-zone__anchor--left .floating-heart {
       margin-top: 220px;
       top: 100px;
+    }
+    /* Applied by JS once the heart is close to alignment with the CTA white heart */
+    .floating-heart--white {
+      filter: brightness(0) invert(1);
     }
     @media (max-width: 1100px) {
       .heart-zone__anchor { display: none; }
@@ -1298,7 +1304,7 @@
     <section class="cta" id="cta">
       <div class="cta__grid">
         <div>
-          <img src="/logo/bism-heart.png" alt="">
+          <img class="cta__heart" src="/logo/bism-heart.png" alt="">
           <h2>Start with a<br>conversation.</h2>
         </div>
         <div>
@@ -1777,6 +1783,90 @@
 
       // Initial frame after layout settles
       requestAnimationFrame(schedule);
+    })();
+  </script>
+
+  <!-- ============================================================
+       Floating heart → CTA white heart merge animation.
+       As the CTA section enters the viewport, translate the sticky
+       sage heart toward the CTA's white heart position, fade to
+       white, and dissolve at full alignment.
+       ============================================================ -->
+  <script>
+    (function () {
+      var floatingHeart = document.querySelector('.heart-zone__anchor--left .floating-heart');
+      var ctaHeart = document.querySelector('.cta__heart');
+      var wrap = document.querySelector('.wrap');
+      if (!floatingHeart || !ctaHeart || !wrap) return;
+
+      var STICKY_TOP_OFFSET = 100;   // matches CSS .heart-zone__anchor--left .floating-heart { top: 100px }
+      var ANCHOR_LEFT_OFFSET = 80;   // matches CSS .heart-zone__anchor--left { left: 80px }
+
+      var rafId = null;
+      var pending = false;
+
+      function update() {
+        rafId = null;
+        if (!pending) return;
+        pending = false;
+
+        // Skip if the floating heart is hidden (mobile)
+        if (floatingHeart.offsetParent === null) {
+          floatingHeart.style.transform = '';
+          floatingHeart.style.opacity = '';
+          floatingHeart.classList.remove('floating-heart--white');
+          return;
+        }
+
+        var ctaHeartRect = ctaHeart.getBoundingClientRect();
+        var wrapRect = wrap.getBoundingClientRect();
+        var wh = window.innerHeight;
+
+        // The floating heart's natural sticky position in viewport coordinates:
+        var stickyLeft = wrapRect.left + ANCHOR_LEFT_OFFSET;
+        var stickyTop = STICKY_TOP_OFFSET;
+
+        // Progress: 0 when CTA heart at viewport bottom, 1 when CTA heart at sticky pin level
+        var progress = 0;
+        if (ctaHeartRect.top < wh) {
+          if (ctaHeartRect.top > stickyTop) {
+            progress = (wh - ctaHeartRect.top) / (wh - stickyTop);
+          } else {
+            progress = 1;
+          }
+          if (progress < 0) progress = 0;
+          if (progress > 1) progress = 1;
+        }
+
+        // Translate floating heart toward CTA white heart
+        var dx = ctaHeartRect.left - stickyLeft;
+        var dy = ctaHeartRect.top - stickyTop;
+        floatingHeart.style.transform = 'translate(' + (dx * progress).toFixed(2) + 'px, ' + (dy * progress).toFixed(2) + 'px)';
+
+        // Color shift to white when close to alignment (CSS transitions filter)
+        if (progress > 0.7) {
+          floatingHeart.classList.add('floating-heart--white');
+        } else {
+          floatingHeart.classList.remove('floating-heart--white');
+        }
+
+        // Dissolve into the underlying CTA white heart at full alignment
+        if (progress > 0.95) {
+          var fade = 1 - (progress - 0.95) * 20;  // 1 → 0 over progress 0.95 → 1.0
+          floatingHeart.style.opacity = (Math.max(0, fade) * 0.85).toFixed(3);
+        } else {
+          floatingHeart.style.opacity = '';
+        }
+      }
+
+      function schedule() {
+        pending = true;
+        if (rafId == null) rafId = requestAnimationFrame(update);
+      }
+
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule, { passive: true });
+      schedule();
     })();
   </script>
 
