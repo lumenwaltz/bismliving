@@ -1,0 +1,2056 @@
+---
+// Bism Supported Living — phiên bản tiếng Việt (bản nháp phần đầu trang/menu/chân trang; các phần khác vẫn bằng tiếng Anh, chờ dịch)
+---
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#7d8a5e">
+  <title>Bism Supported Living · Dịch Vụ Sống Có Hỗ Trợ và Sống Độc Lập tại Quận Los Angeles · Nhà cung cấp được Trung tâm khu vực California cấp giấy phép</title>
+  <meta name="description" content="Bism Supported Living, LLC là nhà cung cấp được Trung tâm khu vực California cấp giấy phép, cung cấp Dịch Vụ Sống Có Hỗ Trợ (SLS) và Dịch Vụ Sinh Hoạt Độc Lập (ILS) cho người lớn khuyết tật phát triển tại Quận Los Angeles. Được Trung tâm Khu vực Frank D. Lanterman cấp giấy phép, mã số nhà cung cấp PD4210. Sẵn sàng tiếp nhận khách hàng từ mọi Trung tâm khu vực ở California. Nhân viên nói tiếng Việt, tiếng Anh và tiếng Tây Ban Nha.">
+  <link rel="canonical" href="https://bismliving.com/vi/">
+  <meta name="author" content="Bism LLC">
+  <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://bismliving.com/vi/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bism Supported Living · Dịch Vụ Sống Có Hỗ Trợ và Sống Độc Lập tại Quận Los Angeles">
+  <meta property="og:description" content="Nhà cung cấp được Trung tâm khu vực California cấp giấy phép, cung cấp SLS và ILS cho người lớn khuyết tật phát triển tại Quận LA.">
+  <meta property="og:locale" content="vi_VN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bism Supported Living · Dịch Vụ Sống Có Hỗ Trợ và Sống Độc Lập tại Quận Los Angeles">
+  <meta name="twitter:description" content="Nhà cung cấp được Trung tâm khu vực California cấp giấy phép, cung cấp SLS và ILS cho người lớn khuyết tật phát triển tại Quận LA.">
+  <link rel="alternate" hreflang="en" href="https://bismliving.com/">
+  <link rel="alternate" hreflang="es" href="https://bismliving.com/es/">
+  <link rel="alternate" hreflang="vi" href="https://bismliving.com/vi/">
+  <link rel="alternate" hreflang="x-default" href="https://bismliving.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Direction D · Storybook palette ---------- */
+    :root {
+      --bg:        #f7f1e3;
+      --paper:     #fdf9ee;
+      --surface:   #ead9b6;
+      --deep:      #2d2820;   /* dark band — D's ink */
+      --ink:       #2d2820;
+      --soft-ink:  #5a5040;
+      --accent:    #7d8a5e;
+      --accent-deep: #5d6a44;
+      --accent-soft: #a8b48a;  /* lightened from D accent for dark-bg use */
+      --warm:      #c47a4f;
+      --pink:      #d4a190;
+      --border:    #d8c8a8;
+      --border-soft: #e6dcc0;
+
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --body:    'Inter', -apple-system, system-ui, sans-serif;
+      --mono:    'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; cursor: pointer; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .wrap { max-width: 1440px; margin: 0 auto; }
+
+    /* ---------- Header ---------- */
+    .nav {
+      padding: 28px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav__logo img { height: 90px; width: auto; }
+    /* Contained pill — never bleeds past its own box, so it cannot collide
+       with the CTA or language toggle when translated labels run longer. */
+    .nav__logo, .nav__right { flex-shrink: 0; }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 4px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--paper);
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .nav__links a {
+      text-decoration: none;
+      padding: 9px 15px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav__links a:hover { background: var(--surface); color: var(--ink); }
+    .nav__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    /* ---------- Language toggle ---------- */
+    .nav__lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--paper);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+    }
+    .nav__lang a {
+      display: block;
+      padding: 5px 13px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--soft-ink);
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav__lang a:hover { color: var(--ink); background: var(--surface); }
+    .nav__lang a[aria-current="true"] { background: var(--ink); color: var(--bg); }
+    .nav__cta {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------- Eyebrow ---------- */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 28px;
+    }
+    .eyebrow--bar {
+      display: inline-flex; align-items: center; gap: 12px;
+    }
+    .eyebrow--bar::before {
+      content: ""; width: 24px; height: 1px; background: currentColor;
+      display: inline-block;
+    }
+
+    section { padding: 120px 80px; }
+
+    /* ---------- HERO (Direction A copy) ---------- */
+    .hero {
+      padding: 100px 80px 80px;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: 77px;
+      line-height: 1.05;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .hero h1 em {
+      color: var(--accent-deep);
+      font-style: italic;
+    }
+    .hero__lead {
+      font-size: 21px;
+      line-height: 1.55;
+      margin-top: 36px;
+      max-width: 560px;
+      color: var(--ink);
+      opacity: 0.78;
+    }
+    .hero__ctas {
+      display: flex; gap: 16px; margin-top: 44px;
+    }
+    .btn {
+      padding: 18px 32px;
+      border-radius: 999px;
+      font-size: 15px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .btn--solid {
+      background: var(--ink);
+      color: var(--bg);
+      border: 1px solid var(--ink);
+    }
+    .btn--ghost {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+    }
+    .hero__partners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      opacity: 0.85;
+    }
+
+    .hero__photo {
+      position: relative;
+    }
+    .photo {
+      aspect-ratio: 4 / 5;
+      background:
+        repeating-linear-gradient(135deg,
+          var(--surface) 0 12px,
+          var(--border) 12px 24px);
+      color: var(--soft-ink);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+    .photo--sage { background: repeating-linear-gradient(135deg, #c9d2b8 0 12px, #bcc7a7 12px 24px); }
+    .photo--warm { background: repeating-linear-gradient(135deg, #e8dfd1 0 12px, #ddd1be 12px 24px); }
+    .photo--clay { background: repeating-linear-gradient(135deg, #d4b69b 0 12px, #c8a98c 12px 24px); }
+    .photo--deep { background: repeating-linear-gradient(135deg, #3a3a35 0 12px, #33332e 12px 24px); color: #aea696; }
+
+    /* Scroll-synced video — overrides .photo placeholder visuals */
+    .photo--video {
+      background: var(--surface);
+      padding: 0;
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .hero__photo-video { aspect-ratio: 812 / 1200; height: auto; }
+    .careers__photo.photo--video {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 520px;
+    }
+    .areas__map-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      background: var(--surface);
+    }
+
+    .hero__pull {
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 240px;
+      background: var(--paper);
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 24px 48px -28px rgba(45, 40, 32, 0.18);
+    }
+    .hero__pull img { height: 36px; margin-bottom: 14px; }
+    .hero__pull-quote {
+      font-family: var(--display);
+      font-size: 22px;
+      line-height: 1.2;
+      font-style: italic;
+      color: var(--ink);
+    }
+    .hero__pull-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      margin-top: 10px;
+    }
+
+    /* ---------- SLS / ILS split (B) ---------- */
+    .split {
+      padding: 0;
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .split__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .split__col {
+      padding: 120px 56px;
+    }
+    .split__col + .split__col {
+      border-left: 1px solid rgba(247, 241, 227, 0.22);
+    }
+    .split__label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--bg);
+      opacity: 0.75;
+      margin-bottom: 28px;
+    }
+    .split h2 {
+      font-family: var(--display);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      color: var(--bg);
+      letter-spacing: -0.02em;
+    }
+    .split p {
+      font-size: 17px;
+      line-height: 1.65;
+      margin-top: 28px;
+      color: var(--bg);
+      opacity: 0.72;
+      max-width: 440px;
+    }
+    .split ul {
+      margin-top: 32px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+    .split li {
+      padding-left: 24px;
+      position: relative;
+      color: var(--bg);
+      opacity: 0.88;
+      font-size: 15px;
+    }
+    .split li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 11px;
+      width: 12px; height: 1px;
+      background: var(--bg);
+      opacity: 0.65;
+    }
+
+    /* ---------- Approach manifesto (B) ---------- */
+    .approach {
+      padding: 160px 80px;
+    }
+    .approach__grid {
+      display: grid;
+      grid-template-columns: 0.6fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .approach__side {
+      position: sticky; top: 40px;
+    }
+    .approach h2 {
+      font-family: var(--display);
+      font-size: 84px;
+      font-weight: 300;
+      line-height: 0.98;
+      margin: 0;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+    }
+    .approach h2 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .approach__lead {
+      font-size: 22px;
+      line-height: 1.5;
+      margin-top: 40px;
+      color: var(--ink);
+      opacity: 0.78;
+      max-width: 720px;
+    }
+    .approach__points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 80px;
+    }
+    .approach__point {
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .approach__point h3 {
+      font-family: var(--display);
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+    .approach__point p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      opacity: 0.7;
+    }
+    /* Floating sticky hearts.
+       Two heart zones wrap content vertically:
+         heart-zone--top    wraps hero + split, hero-pull heart sticks here
+         heart-zone--bottom wraps approach + all following sections, approach heart sticks here
+       Each zone has an absolutely-positioned anchor that defines the horizontal
+       position; the heart inside is position:sticky so it pins to the viewport
+       top offset while its zone is in view, then releases when the zone ends. */
+    .heart-zone { position: relative; }
+    .heart-zone__anchor {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .heart-zone__anchor--left {
+      left: 80px;
+      width: 56px;
+    }
+    .floating-heart {
+      position: sticky;
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.85;
+      transition: filter 0.35s ease, opacity 0.2s ease;
+      will-change: transform, filter, opacity;
+    }
+    /* Approach heart starts under the "Our Approach" eyebrow */
+    .heart-zone__anchor--left .floating-heart {
+      margin-top: 220px;
+      top: 100px;
+    }
+    /* Applied by JS once the heart is close to alignment with the CTA white heart */
+    .floating-heart--white {
+      filter: brightness(0) invert(1);
+    }
+    @media (max-width: 1100px) {
+      .heart-zone__anchor { display: none; }
+    }
+
+    /* ---------- Who we serve (B) ---------- */
+    .serve {
+      background: var(--surface);
+      padding: 140px 80px;
+    }
+    .serve__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .serve h2 {
+      font-family: var(--display);
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .serve p {
+      font-size: 17px;
+      line-height: 1.65;
+      margin-top: 28px;
+      opacity: 0.75;
+      max-width: 420px;
+    }
+    .serve__row {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .serve__row:last-child { border-bottom: 1px solid var(--border); }
+    .serve__row-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--soft-ink);
+      letter-spacing: 0.15em;
+    }
+    .serve__row-text {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+    .serve__row-arrow {
+      font-size: 22px;
+      color: var(--accent);
+    }
+
+    /* ---------- Service Areas (B) ---------- */
+    .areas {
+      padding: 140px 80px;
+    }
+    .areas__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .areas__map {
+      background: var(--paper);
+      padding: 56px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .areas__map-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+      text-align: center;
+      margin-top: 24px;
+    }
+    .areas h2 {
+      font-family: var(--display);
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0 0 32px;
+      letter-spacing: -0.02em;
+    }
+    .areas__list { display: grid; gap: 14px; }
+    .areas__cities {
+      margin-top: 34px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+      max-width: 460px;
+    }
+    .areas__cities-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 12px;
+    }
+    .areas__cities p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--soft-ink);
+    }
+    .areas__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .areas__row-name {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 400;
+    }
+    .areas__row-abbr {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--soft-ink);
+      letter-spacing: 0.12em;
+    }
+
+    /* ---------- Testimonials (B) ---------- */
+    .quotes {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 160px 80px;
+    }
+    .quotes__label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--bg);
+      opacity: 0.75;
+      margin-bottom: 48px;
+      text-transform: uppercase;
+    }
+    .quotes blockquote {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 72px;
+      line-height: 1.08;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--bg);
+      max-width: 1200px;
+    }
+    .quotes blockquote em {
+      color: var(--paper);
+      font-style: italic;
+      opacity: 0.92;
+    }
+    .quotes__attrib {
+      margin-top: 48px;
+      font-size: 14px;
+      color: var(--bg);
+      opacity: 0.6;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .quotes__small {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 100px;
+      padding-top: 60px;
+      border-top: 1px solid rgba(247, 241, 227, 0.30);
+    }
+    .quotes__small p {
+      font-family: var(--display);
+      font-size: 19px;
+      line-height: 1.45;
+      font-style: italic;
+      font-weight: 300;
+      margin: 0;
+      opacity: 0.92;
+    }
+    .quotes__small-name {
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--bg);
+      opacity: 0.75;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Careers (B) ---------- */
+    .careers {
+      padding: 140px 80px;
+    }
+    .careers__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: stretch;
+    }
+    .careers__photo { height: 100%; min-height: 520px; aspect-ratio: auto; }
+    .careers h2 {
+      font-family: var(--display);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .careers__lead {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 28px;
+      margin-bottom: 44px;
+      opacity: 0.78;
+      max-width: 480px;
+    }
+    .btn--accent {
+      background: var(--accent);
+      color: var(--bg);
+      border-radius: 4px;
+      padding: 18px 32px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    /* ---------- Resources (B) ---------- */
+    .resources {
+      background: var(--surface);
+      padding: 140px 80px;
+    }
+    .resources__head { margin-bottom: 64px; }
+    .resources h2 {
+      font-family: var(--display);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .resources__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .resources__card {
+      background: var(--paper);
+      padding: 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .resources__card-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--soft-ink);
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+    .resources__card-title {
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .resources__card-desc {
+      font-size: 14px;
+      color: var(--soft-ink);
+      line-height: 1.55;
+    }
+    .resources__card-cta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    /* ---------- FAQ (B) ---------- */
+    .faq {
+      padding: 140px 80px;
+    }
+    .faq__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq h2 {
+      font-family: var(--display);
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .faq__lead {
+      font-size: 16px;
+      margin-top: 28px;
+      color: var(--soft-ink);
+      line-height: 1.6;
+      max-width: 360px;
+    }
+    .faq__item {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq__list .faq__item:last-child { border-bottom: 1px solid var(--border); }
+    .faq__q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      cursor: pointer;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .faq__plus {
+      font-size: 24px;
+      color: var(--accent);
+      font-weight: 200;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .faq__item[open] .faq__plus { transform: rotate(45deg); }
+    .faq__a {
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 1.65;
+      opacity: 0.78;
+      max-width: 640px;
+    }
+
+    /* ---------- CTA (B) ---------- */
+    .cta {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 160px 80px;
+    }
+    .cta__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .cta img {
+      height: 64px;
+      filter: brightness(0) invert(1);
+    }
+    .cta h2 {
+      font-family: var(--display);
+      font-size: 116px;
+      font-weight: 300;
+      line-height: 0.96;
+      margin: 32px 0 0;
+      color: var(--bg);
+      letter-spacing: -0.03em;
+    }
+    .cta__lead {
+      font-size: 19px;
+      line-height: 1.55;
+      color: var(--bg);
+      opacity: 0.88;
+      margin: 0 0 36px;
+    }
+    .cta__actions { display: grid; gap: 12px; }
+    .cta .btn--solid {
+      background: var(--bg);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 20px 32px;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+    }
+    .cta .btn--ghost {
+      border: 1px solid var(--bg);
+      color: var(--bg);
+      border-radius: 4px;
+      padding: 20px 32px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 48px 80px;
+      background: var(--deep);
+      color: var(--bg);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      line-height: 1.7;
+    }
+    footer .footer__col { opacity: 0.78; }
+    footer .footer__col--mid { text-align: center; }
+    footer .footer__col--right { text-align: right; }
+    footer a { color: inherit; text-decoration: underline; text-decoration-color: rgba(247,241,227,0.3); }
+
+    /* ---------- Visually hidden (for SR / LLM crawler content) ---------- */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ---------- Modals ---------- */
+    dialog.modal {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: 680px;
+      width: calc(100% - 40px);
+      margin: auto;
+      color: var(--ink);
+    }
+    dialog.modal::backdrop {
+      background: rgba(45, 40, 32, 0.55);
+      backdrop-filter: blur(2px);
+    }
+    .modal__panel {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 52px 56px 48px;
+      position: relative;
+      font-family: var(--body);
+      box-shadow: 0 30px 80px -40px rgba(45, 40, 32, 0.45);
+    }
+    .modal__close {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      background: transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--soft-ink);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0;
+    }
+    .modal__close:hover { background: var(--bg); }
+    .modal__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 18px;
+    }
+    .modal__title {
+      font-family: var(--display);
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .modal__sub {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--soft-ink);
+      margin: 0 0 28px;
+    }
+    .modal__body p { margin: 0 0 16px; font-size: 16px; line-height: 1.65; }
+    .modal__body h4 {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 400;
+      margin: 24px 0 8px;
+      letter-spacing: -0.005em;
+    }
+    .modal__body ul {
+      padding-left: 18px;
+      margin: 0 0 16px;
+    }
+    .modal__body li {
+      margin-bottom: 6px;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    /* Form */
+    .modal__form { display: grid; gap: 16px; }
+    .modal__form label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+    }
+    .modal__form input,
+    .modal__form textarea {
+      font-family: var(--body);
+      font-size: 16px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .modal__form input:focus,
+    .modal__form textarea:focus {
+      border-color: var(--accent);
+    }
+    .modal__form textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+    .modal__form-submit {
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      border-radius: 999px;
+      padding: 16px 32px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      width: max-content;
+      margin-top: 6px;
+      font-family: var(--body);
+      transition: opacity 0.15s;
+    }
+    .modal__form-submit:disabled {
+      opacity: 0.55;
+      cursor: progress;
+    }
+    /* Honeypot — visually hidden, kept focusable-off so bots auto-fill but humans don't see it */
+    .modal__form-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .modal__form-error {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--warm);
+      background: rgba(196, 122, 79, 0.10);
+      border: 1px solid rgba(196, 122, 79, 0.45);
+      padding: 12px 14px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+    .modal__form-error a {
+      color: var(--warm);
+      text-decoration: underline;
+    }
+    .modal__thanks {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .modal__thanks h3 {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 400;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+    .modal__thanks p {
+      margin: 0;
+      color: var(--soft-ink);
+    }
+
+    /* Phones: the 3-language pill no longer fits beside the logo, so let the
+       header wrap — logo on top, CTA + language toggle right-aligned beneath. */
+    @media (max-width: 620px) {
+      .nav { flex-wrap: wrap; row-gap: 14px; }
+      .nav__logo { flex: 1 1 100%; }
+      .nav__right { margin-left: auto; align-items: flex-end; }
+    }
+
+    @media (max-width: 700px) {
+      .modal__panel { padding: 36px 28px 32px; }
+      /* Display type has to come down or a single long word (e.g. the CTA's
+         "conversation.") is physically wider than a phone screen. */
+      .hero h1 { font-size: 40px; }
+      .approach h2 { font-size: 40px; }
+      .quotes blockquote { font-size: 30px; }
+      .cta h2 { font-size: 42px; }
+      .split__col h2 { font-size: 36px; }
+      /* 1fr refuses to go below its longest word, shoving the arrow off-screen;
+         minmax(0,1fr) lets the text column actually shrink. */
+      .serve__row { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; padding: 20px 0; }
+      .serve__row-text { font-size: 22px; }
+      h1, h2, h3, h4, p, blockquote, li { overflow-wrap: break-word; }
+      .split__col { padding: 80px 32px; }
+      footer { grid-template-columns: 1fr; gap: 22px; }
+      footer .footer__col--mid, footer .footer__col--right { text-align: left; }
+      .nav__logo img { height: 64px; }
+      .nav__lang { font-size: 11px; }
+      .nav__lang a { padding: 5px 9px; }
+      .modal__title { font-size: 28px; }
+    }
+
+    /* Hide the nav pill once its labels no longer fit beside the logo and CTA.
+       Threshold is per-language: measured min width is en 1111 / es 1202 / vi 1152. */
+    @media (max-width: 1190px) {
+      .nav__links { display: none; }
+    }
+
+    /* ---------- Responsive (light pass) ---------- */
+    @media (max-width: 1100px) {
+      /* section[class] is needed to outrank the per-section class rules
+         (.serve/.areas/.quotes/.careers/.resources/.faq/.approach each set
+         `padding: Npx 80px`, which beats a bare `section` selector).
+         .nav and footer are not sections, so they are named too. */
+      .hero, section, section[class], .nav, .cta, footer {
+        padding-left: 32px; padding-right: 32px;
+      }
+      /* grid/flex children default to min-width:auto and refuse to shrink
+         below their longest word — which pushed the page wider than the screen. */
+      .split__col, .serve__row, .areas__row, .faq__item, .resources__card { min-width: 0; }
+      .hero__grid > *, .approach__grid > *, .serve__grid > *, .areas__grid > *,
+      .careers__grid > *, .faq__grid > *, .cta__grid > *, .split__grid > *,
+      .resources__grid > * { min-width: 0; }
+      .hero__grid, .approach__grid, .serve__grid, .areas__grid,
+      .careers__grid, .faq__grid, .cta__grid, .split__grid,
+      .resources__grid, .quotes__small, .approach__points,
+      .careers__stats {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .hero h1 { font-size: 52px; }
+      .approach h2 { font-size: 56px; }
+      .quotes blockquote { font-size: 44px; }
+      .cta h2 { font-size: 72px; }
+      .hero__pull { position: static; width: auto; margin-top: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ===================== NAV ===================== -->
+    <header class="nav">
+      <div class="nav__logo">
+        <a href="/"><img src="/logo/bism-no-subtext.png" alt="Bism" /></a>
+      </div>
+      <nav class="nav__links">
+        <a href="#services">Dịch vụ</a>
+        <a href="#approach">Cách làm việc</a>
+        <a href="#areas">Khu vực phục vụ</a>
+        <a href="#careers">Việc làm</a>
+        <a href="#faq">Hỏi đáp</a>
+      </nav>
+      <div class="nav__right">
+        <a class="nav__cta" href="#cta" data-modal="modal-request">Yêu cầu dịch vụ →</a>
+        <div class="nav__lang" role="group" aria-label="Ngôn ngữ">
+          <a href="/" hreflang="en" lang="en">English</a>
+          <a href="/es/" hreflang="es" lang="es">Español</a>
+          <a href="/vi/" hreflang="vi" lang="vi" aria-current="true">Tiếng Việt</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== HERO (Direction A copy) ===================== -->
+    <section class="hero">
+      <div class="hero__grid">
+        <div>
+          <div class="eyebrow">Sống Có Hỗ Trợ và Sống Độc Lập · Quận Los Angeles</div>
+          <h1>
+            Chào mừng<br>
+            đến chương tiếp theo.<br>
+            <em>Cùng nhau viết</em> nên.
+          </h1>
+          <p class="hero__lead">
+            Bism Supported Living, LLC đồng hành cùng người lớn khuyết tật phát triển ở Quận Los Angeles, xây dựng cuộc sống theo mục tiêu, thói quen và các mối quan hệ của riêng quý vị — với sự chăm sóc luôn lắng nghe trước.
+          </p>
+          <div class="hero__ctas">
+            <a class="btn btn--solid" href="#testimonials">Lời chia sẻ</a>
+            <a class="btn btn--ghost" href="#services">SLS / ILS là gì?</a>
+          </div>
+          <div class="hero__partners">
+            <span>Nhà cung cấp được Trung tâm khu vực California cấp giấy phép · Phục vụ người lớn khắp Quận Los Angeles · Có nhân viên nói tiếng Việt</span>
+          </div>
+        </div>
+        <div class="hero__photo">
+          <video class="photo photo--video hero__photo-video"
+                 data-scroll-video
+                 preload="auto" muted playsinline
+                 disablepictureinpicture
+                 aria-label="Bism — sống có hỗ trợ tại nhà"
+                 poster="">
+            <source src="/media/hero.mp4" type="video/mp4">
+          </video>
+          <div class="hero__pull">
+            <img src="/logo/bism-heart.png" alt="">
+            <div class="hero__pull-quote">«Tận tâm trong chăm sóc.<br>Tiếng nói của quý vị, hành động của chúng tôi.»</div>
+            <div class="hero__pull-label">Lời hứa của chúng tôi</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SLS / ILS SPLIT (Direction B) ===================== -->
+    <section class="split" id="services">
+      <div class="split__grid">
+        <div class="split__col">
+          <div class="split__label">SLS — Sống Có Hỗ Trợ</div>
+          <h2>Nhà của quý vị,<br>theo cách của quý vị.</h2>
+          <p>
+            Hỗ trợ riêng cho từng người — lên đến 24 giờ mỗi ngày — ngay tại nhà quý vị đang ở. Chúng tôi giúp những việc quý vị chọn: nấu ăn, đi làm, gặp gỡ bạn bè, và mọi việc khác trong ngày.
+          </p>
+          <ul>
+            <li>Hỗ trợ sinh hoạt hằng ngày</li>
+            <li>Phối hợp về hành vi và y tế</li>
+            <li>Hòa nhập cộng đồng</li>
+            <li>Tìm người ở chung phù hợp</li>
+          </ul>
+        </div>
+        <div class="split__col">
+          <div class="split__label">ILS — Sinh Hoạt Độc Lập</div>
+          <h2>Kỹ năng cho<br>chặng đường dài.</h2>
+          <p>
+            Hướng dẫn bắt đầu từ chỗ mỗi người đang đứng — rèn kỹ năng thật trong hoàn cảnh thật. Chúng tôi đi theo nhịp của quý vị, không phải nhịp của chúng tôi.
+          </p>
+          <ul>
+            <li>Tiền bạc và chi tiêu</li>
+            <li>Đi lại và di chuyển</li>
+            <li>Tự bênh vực cho mình</li>
+            <li>Sức khỏe và chăm sóc y tế</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== APPROACH + REMAINING SECTIONS (bottom heart zone) ===================== -->
+    <div class="heart-zone heart-zone--bottom">
+      <div class="heart-zone__anchor heart-zone__anchor--left">
+        <img class="floating-heart" src="/logo/bism-heart.png" alt="" aria-hidden="true">
+      </div>
+
+    <!-- ===================== APPROACH MANIFESTO (Direction B) ===================== -->
+    <section class="approach" id="approach">
+      <div class="approach__grid">
+        <div class="approach__side">
+          <div class="eyebrow">Cách chúng tôi làm việc</div>
+        </div>
+        <div>
+          <h2>Chúng tôi hỗ trợ — <em>không áp đặt.</em></h2>
+          <p class="approach__lead">
+            Kế hoạch riêng cho từng người, với chúng tôi, không phải là một khẩu hiệu — đó là cách dựng nên từng kế hoạch, từng lần ghép người, từng lần bàn giao ca. Người chúng tôi phục vụ mới là người viết nên câu chuyện. Chúng tôi chỉ là bàn tay vững vàng giữ lấy trang giấy.
+          </p>
+          <div class="approach__points">
+            <div class="approach__point">
+              <h3>Bền bỉ hơn là mở rộng.</h3>
+              <p>Chúng tôi phát triển chậm để nhân viên gắn bó đủ lâu, đủ hiểu người mà họ hỗ trợ.</p>
+            </div>
+            <div class="approach__point">
+              <h3>Hiểu hoàn cảnh riêng, ngay từ đầu.</h3>
+              <p>Mọi nhân viên đều được huấn luyện để hiểu hoàn cảnh riêng của từng người trước khi bắt tay vào việc — đó là điều căn bản, không phải một chuyên môn riêng.</p>
+            </div>
+            <div class="approach__point">
+              <h3>Gia đình là người đồng hành.</h3>
+              <p>Chúng tôi trao đổi cởi mở với gia đình và người thân, không bao giờ làm sau lưng họ.</p>
+            </div>
+            <div class="approach__point">
+              <h3>Tôn trọng ranh giới.</h3>
+              <p>Nhu cầu giác quan, cách giao tiếp và nếp sinh hoạt riêng đều được tôn trọng, không thương lượng.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHO WE SERVE (Direction B) ===================== -->
+    <section class="serve">
+      <div class="serve__grid">
+        <div>
+          <div class="eyebrow">Chúng tôi phục vụ ai</div>
+          <h2>Những người lớn có câu chuyện không đi theo đường thẳng.</h2>
+          <p>
+            Chúng tôi phục vụ người lớn (từ 18 tuổi) đang nhận dịch vụ của một Trung tâm khu vực California — những người khuyết tật phát triển, kể cả người trong phổ tự kỷ và người khuyết tật trí tuệ.
+          </p>
+        </div>
+        <div>
+          <div class="serve__row">
+            <div class="serve__row-num">/01</div>
+            <div class="serve__row-text">Sinh hoạt độc lập với hỗ trợ hằng ngày</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/02</div>
+            <div class="serve__row-text">Chuyển từ nhà gia đình ra ở riêng</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/03</div>
+            <div class="serve__row-text">Rời nhà tập thể để tự lập hơn</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/04</div>
+            <div class="serve__row-text">Đáp ứng nhu cầu phức tạp với chăm sóc 24 giờ</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+          <div class="serve__row">
+            <div class="serve__row-num">/05</div>
+            <div class="serve__row-text">Rèn kỹ năng trước một bước chuyển đã định</div>
+            <div class="serve__row-arrow">→</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICE AREAS (Direction B) ===================== -->
+    <section class="areas" id="areas">
+      <div class="areas__grid">
+        <div class="areas__map">
+          <img class="areas__map-image" src="/media/map.png"
+               alt="Bản đồ các Trung tâm khu vực ở Los Angeles — North LA County, San Gabriel/Pomona, Westside, Lanterman, Eastern LA, South Central LA, Harbor"
+               loading="lazy" decoding="async">
+          <div class="areas__map-label">Các Trung tâm khu vực ở Los Angeles</div>
+        </div>
+        <div>
+          <div class="eyebrow">Nơi chúng tôi phục vụ</div>
+          <h2>Khắp Quận Los Angeles, với gốc rễ ở vùng nhà mình.</h2>
+          <p style="font-size:16px; line-height:1.6; color:var(--soft-ink); max-width:440px; margin:0 0 28px;">
+            Bism phục vụ người lớn khắp Quận Los Angeles và luôn sẵn sàng tiếp nhận câu hỏi từ khách hàng của bất kỳ Trung tâm khu vực nào ở California.
+          </p>
+          <div class="areas__list">
+            <div class="areas__row"><div class="areas__row-name">North Los Angeles County</div><div class="areas__row-abbr">NLACRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">San Gabriel / Pomona</div><div class="areas__row-abbr">SGPRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Westside</div><div class="areas__row-abbr">WRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Lanterman</div><div class="areas__row-abbr">FDLRC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Eastern Los Angeles</div><div class="areas__row-abbr">ELARC</div></div>
+            <div class="areas__row"><div class="areas__row-name">South Central Los Angeles</div><div class="areas__row-abbr">SCLARC</div></div>
+            <div class="areas__row"><div class="areas__row-name">Harbor</div><div class="areas__row-abbr">HRC</div></div>
+          </div>
+          <div class="areas__cities">
+            <div class="areas__cities-label">Nơi chúng tôi có mặt nhiều nhất</div>
+            <p>
+              Chúng tôi phục vụ đều đặn nhất trong khu vực của Lanterman — Burbank, Glendale, Hollywood,
+              La Cañada Flintridge, La Crescenta-Montrose, North Hollywood, Pasadena, Sunland và Tujunga.
+              Chúng tôi có thể phục vụ người lớn ở bất kỳ nơi nào trong Quận Los Angeles nếu Trung tâm khu vực
+              chấp thuận dịch vụ với chúng tôi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS (Direction B) ===================== -->
+    <section class="quotes" id="testimonials">
+      <div class="quotes__label">Gia đình chia sẻ</div>
+      <blockquote>
+        «Chúng tôi đã chờ rất lâu mới tìm được nhà cung cấp phù hợp. Khác biệt là ở chỗ <em>họ hỏi con trai tôi muốn gì</em>, rồi lắng nghe và giúp cháu.»
+      </blockquote>
+      <div class="quotes__attrib">David và Anne K. — Phụ huynh, Long Beach</div>
+      <div class="quotes__small">
+        <div>
+          <p>«Lần đầu tiên em trai tôi có một nếp sinh hoạt buổi sáng. Cháu bắt đầu muốn tham gia nhiều hơn.»</p>
+          <div class="quotes__small-name">Marisol R., Pasadena</div>
+        </div>
+        <div>
+          <p>«Sau nhiều năm thay người liên tục ở các nơi khác, cùng một nhân viên đã ở với con gái tôi suốt ba năm. Điều đó thật sự rất tốt cho cháu.»</p>
+          <div class="quotes__small-name">Linda T., West LA</div>
+        </div>
+        <div>
+          <p>«Họ dạy con trai tôi đi xe buýt. Họ cũng dạy cháu rằng nhờ giúp đỡ là chuyện bình thường.»</p>
+          <div class="quotes__small-name">Ahmad và Sara F., Long Beach</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CAREERS (Direction B) ===================== -->
+    <section class="careers" id="careers">
+      <div class="careers__grid">
+        <video class="photo photo--video careers__photo"
+               data-scroll-video
+               preload="auto" muted playsinline
+               disablepictureinpicture
+               aria-label="Đội ngũ Bism — nhân viên đang làm việc">
+          <source src="/media/careers.mp4" type="video/mp4">
+        </video>
+        <div>
+          <div class="eyebrow">Việc làm · Nhân viên hỗ trợ</div>
+          <h2>Công việc cần kiên nhẫn, với những con người đáng quý.</h2>
+          <p class="careers__lead">
+            Chúng tôi tuyển người có mặt thật lòng và nhiệt tâm; phần còn lại chúng tôi đào tạo kỹ.
+          </p>
+          <a class="btn--accent" href="#">Xem vị trí đang tuyển →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESOURCES (Direction B) ===================== -->
+    <section class="resources">
+      <div class="resources__head">
+        <div class="eyebrow">Dành cho gia đình</div>
+        <h2>Hướng dẫn dễ hiểu cho những điều không ai giải thích.</h2>
+      </div>
+      <div class="resources__grid">
+        <a class="resources__card" href="#" data-modal="modal-guide-ipp">
+          <div>
+            <div class="resources__card-tag">HƯỚNG DẪN / 01</div>
+            <div class="resources__card-title">Hiểu rõ về IPP</div>
+            <div class="resources__card-desc">Trong đó có gì, ra được điều gì, và làm sao lên tiếng.</div>
+          </div>
+          <div class="resources__card-cta">Đọc →</div>
+        </a>
+        <a class="resources__card" href="#" data-modal="modal-guide-vendor">
+          <div>
+            <div class="resources__card-tag">HƯỚNG DẪN / 02</div>
+            <div class="resources__card-title">Chọn nhà cung cấp dịch vụ</div>
+            <div class="resources__card-desc">Những câu nên hỏi trước khi ký bất kỳ hợp đồng dịch vụ nào.</div>
+          </div>
+          <div class="resources__card-cta">Đọc →</div>
+        </a>
+        <a class="resources__card" href="#" data-modal="modal-guide-rc">
+          <div>
+            <div class="resources__card-tag">HƯỚNG DẪN / 03</div>
+            <div class="resources__card-title">Tìm hiểu về Trung tâm khu vực</div>
+            <div class="resources__card-desc">Vai trò, thời hạn, và cách hiểu điều kiện hội đủ.</div>
+          </div>
+          <div class="resources__card-cta">Đọc →</div>
+        </a>
+        <a class="resources__card" href="#" data-modal="modal-guide-transition">
+          <div>
+            <div class="resources__card-tag">HƯỚNG DẪN / 04</div>
+            <div class="resources__card-title">Chuẩn bị cho một bước chuyển</div>
+            <div class="resources__card-desc">Từ nhà gia đình, nhà tập thể hay trường học — điều gì sẽ đến.</div>
+          </div>
+          <div class="resources__card-cta">Đọc →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ (Direction B) ===================== -->
+    <section class="faq" id="faq">
+      <div class="faq__grid">
+        <div>
+          <div class="eyebrow">Câu hỏi thường gặp</div>
+          <h2>Những câu hỏi, được trả lời thẳng thắn.</h2>
+          <p class="faq__lead">Không thấy câu của quý vị? Hãy liên lạc — chúng tôi muốn nghe trực tiếp hơn.</p>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__q">SLS và ILS khác nhau thế nào?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Dịch Vụ Sống Có Hỗ Trợ (SLS) giúp người lớn sống trong chính ngôi nhà của mình, với hỗ trợ riêng có thể lên đến 24 giờ mỗi ngày. Dịch Vụ Sinh Hoạt Độc Lập (ILS) dạy những kỹ năng cần thiết để sống tự lập hơn — chi tiêu, nấu ăn, đi lại và tự bênh vực cho mình. Cả hai đều do Trung tâm khu vực California tài trợ.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Ai hội đủ điều kiện nhận dịch vụ?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Người lớn (từ 18 tuổi) đang là khách hàng của bất kỳ Trung tâm khu vực nào ở California và có chẩn đoán khuyết tật phát triển hợp lệ. Bism được Trung tâm Khu vực Frank D. Lanterman (FDLRC) cấp giấy phép — đây là vùng nhà của chúng tôi — và chúng tôi luôn sẵn sàng tiếp nhận khách hàng từ bất kỳ Trung tâm khu vực nào trong khu vực Los Angeles, kể cả NLACRC, ELARC, Westside, Harbor, SCLARC và SGPRC.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Tôi bắt đầu bằng cách nào?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Hãy nói với điều phối viên dịch vụ ở Trung tâm khu vực của quý vị và đề nghị chọn Bism làm nhà cung cấp, hoặc liên lạc thẳng với chúng tôi — chúng tôi sẽ hướng dẫn quý vị từng bước trong thủ tục giới thiệu.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Một ngày bình thường diễn ra thế nào?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Mỗi ngày được sắp theo con người, không theo thời khóa biểu. Có ngày yên ắng và đều đặn. Có ngày là đi ra cộng đồng, đi làm, đi học hoặc thăm gia đình. Việc của chúng tôi là hỗ trợ, không phải chỉ đạo.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Gia đình tôi có phải trả khoản nào không?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Không. Các dịch vụ đã ghi trong Kế Hoạch Chương Trình Cá Nhân (IPP) được thanh toán trực tiếp với Trung tâm khu vực. Gia đình và người nhận dịch vụ không phải trả bất kỳ khoản nào.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Quý vị nói những ngôn ngữ nào?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Nhân viên của chúng tôi nói tiếng Anh, tiếng Tây Ban Nha và tiếng Việt, và trang này có đủ cả ba thứ tiếng.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Nhân viên có được đào tạo để hỗ trợ người khuyết tật phát triển không?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Có. Tất cả nhân viên hỗ trợ (DSP) đều được đào tạo ban đầu về cách soạn kế hoạch riêng cho từng người, cách hỗ trợ hành vi tích cực và cách hiểu hoàn cảnh riêng của mỗi gia đình, rồi tiếp tục được huấn luyện sau đó.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA (Direction B) ===================== -->
+    <section class="cta" id="cta">
+      <div class="cta__grid">
+        <div>
+          <img class="cta__heart" src="/logo/bism-heart.png" alt="">
+          <h2>Bắt đầu bằng một<br>cuộc trò chuyện.</h2>
+        </div>
+        <div>
+          <p class="cta__lead">
+            Hãy kể cho chúng tôi đôi chút về người quý vị đang chăm sóc. Chúng tôi sẽ lắng nghe, cho biết điều gì phù hợp, và hướng dẫn quý vị từng bước trong thủ tục giới thiệu.
+          </p>
+          <div class="cta__actions">
+            <a class="btn--solid" href="#" data-modal="modal-request">Yêu cầu dịch vụ →</a>
+            <a class="btn--ghost" href="tel:+12075181374">(207) 518-1374</a>
+            <a class="btn--ghost" href="mailto:info@bismliving.com">info@bismliving.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="footer__col">
+        <div>© 2026 Bism Supported Living, LLC</div>
+        <div>Nhà cung cấp dịch vụ của Trung tâm Khu vực Frank D. Lanterman · #PD4210</div>
+      </div>
+      <div class="footer__col footer__col--mid">
+        <div>201 N Brand Blvd, Suite #200</div>
+        <div>Glendale, CA 91203</div>
+      </div>
+      <div class="footer__col footer__col--right">
+        <div>(207) 518-1374 · 24 giờ</div>
+        <div><a href="mailto:info@bismliving.com">info@bismliving.com</a></div>
+      </div>
+    </footer>
+
+    </div><!-- /heart-zone--bottom -->
+
+  </div>
+
+  <!-- ============================================================
+       MODALS
+       ============================================================ -->
+
+  <!-- Request services -->
+  <dialog class="modal" id="modal-request">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Đóng">×</button>
+      <div class="modal__eyebrow">Yêu cầu dịch vụ</div>
+      <h3 class="modal__title">Hãy kể cho chúng tôi đôi chút về người quý vị đang chăm sóc.</h3>
+      <p class="modal__sub">Chúng tôi sẽ trả lời trong vòng một ngày làm việc. Xin đừng gửi thông tin nhận dạng của khách hàng — chúng tôi sẽ hỏi qua điện thoại sau lần trao đổi đầu tiên.</p>
+      <form class="modal__form" id="request-form" novalidate>
+        <label>Họ và tên<input type="text" name="name" autocomplete="name" required></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <label>Số điện thoại<input type="tel" name="phone" autocomplete="tel"></label>
+        <textarea name="body" placeholder="Quý vị đang nghĩ gì?" aria-label="Lời nhắn"></textarea>
+        <!-- Honeypot — hidden from humans, filled by bots; server treats as spam -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="modal__form-honeypot" aria-hidden="true">
+        <button type="submit" class="modal__form-submit">Gửi</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Guide: The IPP, demystified -->
+  <dialog class="modal" id="modal-guide-ipp">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Đóng">×</button>
+      <div class="modal__eyebrow">Hướng dẫn / 01</div>
+      <h3 class="modal__title">Hiểu rõ về IPP</h3>
+      <p class="modal__sub">Trong đó có gì, ra được điều gì, và làm sao lên tiếng.</p>
+      <div class="modal__body">
+        <p>Kế Hoạch Chương Trình Cá Nhân (IPP) là văn bản quyết định những dịch vụ mà người thân của quý vị nhận được từ Trung tâm khu vực. Kế hoạch này được lập lại mỗi năm — hoặc sớm hơn, sau bất kỳ thay đổi lớn nào trong cuộc sống — trong một buổi họp có quý vị, điều phối viên dịch vụ và những người hiểu rõ người thân của quý vị.</p>
+        <h4>Trong đó có gì</h4>
+        <ul>
+          <li>Mục tiêu — điều người đó đang hướng tới trong năm nay</li>
+          <li>Các dịch vụ được chấp thuận để hỗ trợ những mục tiêu đó</li>
+          <li>Ai chịu trách nhiệm việc gì, và đến khi nào</li>
+          <li>Thông tin sức khỏe, an toàn và liên lạc khẩn cấp</li>
+        </ul>
+        <h4>Chỗ thường bị vướng</h4>
+        <ul>
+          <li>Mục tiêu chép lại từ năm ngoái mà không xem xét lại</li>
+          <li>Dịch vụ ghi bằng lời chung chung, không ai có căn cứ để đòi hỏi</li>
+          <li>Thiếu những tiếng nói quan trọng trong buổi họp</li>
+        </ul>
+        <h4>Điều gì giúp ích</h4>
+        <ul>
+          <li>Mang theo ghi chú về những gì đã thay đổi kể từ IPP lần trước</li>
+          <li>Với mỗi mục tiêu, hãy hỏi «làm sao biết là có kết quả?»</li>
+          <li>Mời những người thật sự dành thời gian với người thân của quý vị</li>
+          <li>Lên tiếng khi cách diễn đạt nghe không giống con người thật của họ</li>
+        </ul>
+        <p>Quý vị có thể yêu cầu họp IPP bất cứ lúc nào — không phải chờ đến kỳ duyệt hằng năm. Khi kế hoạch không còn hợp với cuộc sống, kế hoạch phải thay đổi.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Guide: Choosing a vendor -->
+  <dialog class="modal" id="modal-guide-vendor">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Đóng">×</button>
+      <div class="modal__eyebrow">Hướng dẫn / 02</div>
+      <h3 class="modal__title">Chọn nhà cung cấp dịch vụ</h3>
+      <p class="modal__sub">Những câu nên hỏi trước khi ký bất kỳ hợp đồng dịch vụ nào.</p>
+      <div class="modal__body">
+        <p>Chọn nhà cung cấp là một trong những quyết định lớn nhất trong quá trình IPP. Chọn đúng thì như có thêm người đồng hành; chọn sai thì lại thêm một hệ thống nữa phải lo.</p>
+        <h4>Nên hỏi gì</h4>
+        <ul>
+          <li>Nhân viên hỗ trợ trực tiếp của quý vị thường gắn bó bao lâu?</li>
+          <li>Họ được đào tạo ra sao — và về những gì?</li>
+          <li>Trung bình một điều phối viên phụ trách bao nhiêu khách hàng?</li>
+          <li>Ai nghe điện thoại lúc 2 giờ sáng?</li>
+          <li>Khi có chuyện không hay, quy trình của quý vị là gì?</li>
+        </ul>
+        <h4>Nên để ý điều gì trong câu trả lời</h4>
+        <ul>
+          <li>Chi tiết cụ thể, không phải khẩu hiệu</li>
+          <li>Sẵn sàng nói «tôi chưa biết, để tôi tìm hiểu»</li>
+          <li>Kể chuyện về con người, không phải về quy định</li>
+          <li>Thoải mái khi bị hỏi những câu khó</li>
+        </ul>
+        <h4>Nên cảnh giác điều gì</h4>
+        <ul>
+          <li>Những lời hứa nghe quá trọn vẹn</li>
+          <li>Chú tâm lấp ca trực hơn là ghép đúng người</li>
+          <li>Ngại chia sẻ tỷ lệ nhân viên nghỉ việc</li>
+          <li>Thúc ép ký nhanh</li>
+        </ul>
+        <p>Quý vị luôn có thể đổi nhà cung cấp. Nhưng chọn đúng ngay từ đầu sẽ đỡ nhiều tháng xáo trộn — nên hãy tin vào cảm nhận của mình. Nếu thấy không hợp, thì đúng là không hợp.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Guide: Regional Center 101 -->
+  <dialog class="modal" id="modal-guide-rc">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Đóng">×</button>
+      <div class="modal__eyebrow">Hướng dẫn / 03</div>
+      <h3 class="modal__title">Tìm hiểu về Trung tâm khu vực</h3>
+      <p class="modal__sub">Vai trò, thời hạn, và cách hiểu điều kiện hội đủ.</p>
+      <div class="modal__body">
+        <p>Hệ thống Trung tâm khu vực của California là cửa ngõ dẫn tới dịch vụ dành cho người lớn khuyết tật phát triển. Toàn tiểu bang có 21 Trung tâm khu vực, mỗi trung tâm phụ trách một khu vực. Dịch vụ do tiểu bang tài trợ và miễn phí cho người hội đủ điều kiện.</p>
+        <h4>Ai hội đủ điều kiện</h4>
+        <ul>
+          <li>Có chẩn đoán khuyết tật trí tuệ, tự kỷ, bại não, động kinh hoặc một tình trạng liên quan chặt chẽ</li>
+          <li>Tình trạng xuất hiện trước 18 tuổi và dự kiến kéo dài suốt đời</li>
+          <li>Tình trạng gây hạn chế đáng kể về khả năng sinh hoạt</li>
+        </ul>
+        <h4>Cách thức tiến hành</h4>
+        <ul>
+          <li>Một cuộc gọi tiếp nhận mở đầu quá trình</li>
+          <li>Điều kiện hội đủ được xác định qua việc xem hồ sơ và lượng giá</li>
+          <li>Khi đã hội đủ điều kiện, một điều phối viên dịch vụ sẽ được chỉ định</li>
+          <li>Dịch vụ được ghi vào IPP và do Trung tâm khu vực chấp thuận</li>
+          <li>Nhà cung cấp (như Bism) thực hiện dịch vụ và thanh toán thẳng với Trung tâm khu vực — gia đình không phải trả khoản nào</li>
+        </ul>
+        <h4>Thời gian thường lệ</h4>
+        <ul>
+          <li>Từ lúc tiếp nhận đến khi có quyết định hội đủ điều kiện: thường 60–90 ngày</li>
+          <li>Lập IPP: trong vòng 60 ngày kể từ khi hội đủ điều kiện</li>
+          <li>Bắt đầu dịch vụ: tùy nhà cung cấp còn chỗ và mức phức tạp của kế hoạch</li>
+        </ul>
+        <p>điều phối viên dịch vụ là người quý vị làm việc cùng nhiều nhất. Một người tốt sẽ nắm rõ hoàn cảnh của quý vị, gọi lại khi quý vị nhắn, và giúp quý vị xoay xở. Nếu người của quý vị không như vậy, quý vị có thể xin đổi.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Guide: Planning a transition -->
+  <dialog class="modal" id="modal-guide-transition">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" aria-label="Đóng">×</button>
+      <div class="modal__eyebrow">Hướng dẫn / 04</div>
+      <h3 class="modal__title">Chuẩn bị cho một bước chuyển</h3>
+      <p class="modal__sub">Từ nhà gia đình, nhà tập thể hay trường học — điều gì sẽ đến.</p>
+      <div class="modal__body">
+        <p>Những bước chuyển là thay đổi lớn nhất trong đời người lớn. Rời nhà gia đình, rời nhà tập thể, rời trường học — mỗi việc là một quá trình riêng, và không việc nào xong trong một sớm một chiều.</p>
+        <h4>Bắt đầu sớm hơn quý vị nghĩ</h4>
+        <ul>
+          <li>Bắt đầu trao đổi với Trung tâm khu vực trước ngày dự định 12–18 tháng</li>
+          <li>Rèn kỹ năng trước — nấu ăn, đi lại, tiền bạc, tự bênh vực cho mình</li>
+          <li>Đi xem trước các nơi ở có thể chọn</li>
+          <li>Nói thẳng về điều gì đang ổn và điều gì chưa ổn ở nơi đang sống</li>
+        </ul>
+        <h4>Nên chuẩn bị cho những gì</h4>
+        <ul>
+          <li>Tuần lễ dọn nhà</li>
+          <li>Tháng đầu tiên, khi nếp sinh hoạt còn đang hình thành</li>
+          <li>Sáu tháng đầu, khi vừa có sự tự lập vừa có nỗi nhớ nhà</li>
+          <li>Năm đầu tiên, khi cuộc sống mới bắt đầu ổn định</li>
+        </ul>
+        <h4>Điều gì giúp ích</h4>
+        <ul>
+          <li>Nhân viên quen thuộc, đã biết người đó từ trước khi dọn</li>
+          <li>Nếp sinh hoạt đi theo người đó, thay vì phải dựng lại từ đầu</li>
+          <li>Một phương án dự phòng nếu có điều gì không hợp</li>
+          <li>Được phép đi chậm</li>
+        </ul>
+        <p>Không có nhịp độ «đúng» cho một bước chuyển. Nhịp đúng là nhịp khiến người đó cảm thấy chính mình đã chọn.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Structured data for crawlers / LLMs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "MedicalBusiness"],
+    "name": "Bism Supported Living, LLC",
+    "alternateName": ["Bism", "Bism SLS", "Bism Supported Living"],
+    "description": "Nhà cung cấp được Trung tâm khu vực California cấp giấy phép, cung cấp Dịch Vụ Sống Có Hỗ Trợ (SLS) và Dịch Vụ Sinh Hoạt Độc Lập (ILS) cho người lớn khuyết tật phát triển khắp Quận Los Angeles. Quan hệ nhà cung cấp chính với Trung tâm Khu vực Frank D. Lanterman (FDLRC); sẵn sàng tiếp nhận giới thiệu từ bất kỳ Trung tâm khu vực nào ở California. Kế hoạch riêng cho từng người, và nhân viên hiểu rõ hoàn cảnh của mỗi gia đình.",
+    "inLanguage": "vi",
+    "url": "https://bismliving.com",
+    "email": "info@bismliving.com",
+    "telephone": "+1-207-518-1374",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "201 N Brand Blvd, Suite #200",
+      "addressLocality": "Glendale",
+      "addressRegion": "CA",
+      "postalCode": "91203",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }],
+    "availableLanguage": ["English", "Spanish", "Vietnamese"],
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "FDLRC Vendor Number",
+      "value": "PD4210"
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Los Angeles County, California" },
+      { "@type": "City", "name": "Burbank", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Glendale", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Hollywood", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "La Cañada Flintridge", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "La Crescenta-Montrose", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "North Hollywood", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Pasadena", "containedInPlace": "Los Angeles County" },
+      { "@type": "City", "name": "Sunland-Tujunga", "containedInPlace": "Los Angeles County" }
+    ],
+    "serviceType": [
+      "Supported Living Services (SLS)",
+      "Independent Living Services (ILS)",
+      "Person-centered planning",
+      "Community access support",
+      "Daily living support",
+      "Self-advocacy coaching",
+      "24-hour residential support"
+    ],
+    "knowsAbout": [
+      "California Regional Center system",
+      "Frank D. Lanterman Regional Center (FDLRC)",
+      "North Los Angeles County Regional Center (NLACRC)",
+      "Eastern Los Angeles Regional Center (ELARC)",
+      "Westside Regional Center",
+      "Harbor Regional Center",
+      "South Central Los Angeles Regional Center (SCLARC)",
+      "San Gabriel/Pomona Regional Center (SGPRC)",
+      "Individual Program Plan (IPP)",
+      "Developmental disabilities",
+      "Autism spectrum",
+      "Intellectual and developmental disabilities (IDD)",
+      "Person-centered planning",
+      "Trauma-informed care"
+    ],
+    "audience": {
+      "@type": "PeopleAudience",
+      "audienceType": "Adults (18+) with developmental disabilities who are clients of any California Regional Center"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "SLS và ILS khác nhau thế nào?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Dịch Vụ Sống Có Hỗ Trợ (SLS) giúp người lớn sống trong chính ngôi nhà của mình, với hỗ trợ riêng có thể lên đến 24 giờ mỗi ngày. Dịch Vụ Sinh Hoạt Độc Lập (ILS) dạy những kỹ năng cần thiết để sống tự lập hơn — chi tiêu, nấu ăn, đi lại và tự bênh vực cho mình. Cả hai đều do Trung tâm khu vực California tài trợ." }
+      },
+      {
+        "@type": "Question",
+        "name": "Ai hội đủ điều kiện nhận dịch vụ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Người lớn (từ 18 tuổi) đang là khách hàng của bất kỳ Trung tâm khu vực nào ở California và có chẩn đoán khuyết tật phát triển hợp lệ. Bism được Trung tâm Khu vực Frank D. Lanterman (FDLRC) cấp giấy phép và sẵn sàng tiếp nhận khách hàng từ bất kỳ Trung tâm khu vực nào trong khu vực Los Angeles." }
+      },
+      {
+        "@type": "Question",
+        "name": "Tôi bắt đầu bằng cách nào?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Hãy đề nghị điều phối viên dịch vụ ở Trung tâm khu vực chọn Bism làm nhà cung cấp (mã số nhà cung cấp FDLRC PD4210), hoặc gọi (207) 518-1374 hay gửi email tới info@bismliving.com. Quý vị không phải trả khoản nào — dịch vụ được chấp thuận trong IPP và thanh toán với Trung tâm khu vực." }
+      },
+      {
+        "@type": "Question",
+        "name": "Gia đình tôi có phải trả khoản nào không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Không. Các dịch vụ đã ghi trong Kế Hoạch Chương Trình Cá Nhân (IPP) được thanh toán trực tiếp với Trung tâm khu vực. Gia đình và người nhận dịch vụ không phải trả bất kỳ khoản nào." }
+      },
+      {
+        "@type": "Question",
+        "name": "Nhân viên Bism nói những ngôn ngữ nào?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nhân viên Bism nói tiếng Anh, tiếng Tây Ban Nha và tiếng Việt, và bismliving.com có đủ cả ba thứ tiếng." }
+      },
+      {
+        "@type": "Question",
+        "name": "Nhân viên Bism có được đào tạo để hỗ trợ người khuyết tật phát triển không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Có. Tất cả nhân viên hỗ trợ (DSP) đều được đào tạo ban đầu về cách soạn kế hoạch riêng cho từng người, cách hỗ trợ hành vi tích cực và cách hiểu hoàn cảnh riêng của mỗi gia đình, rồi tiếp tục được huấn luyện sau đó." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ============================================================
+       Modal behavior
+       ============================================================ -->
+  <script>
+    (function () {
+      document.addEventListener('click', function (e) {
+        // Trigger
+        var trigger = e.target.closest('[data-modal]');
+        if (trigger) {
+          e.preventDefault();
+          var dlg = document.getElementById(trigger.dataset.modal);
+          if (dlg && typeof dlg.showModal === 'function') dlg.showModal();
+          return;
+        }
+        // Click on backdrop (the dialog element itself, not its content)
+        if (e.target.tagName === 'DIALOG') {
+          e.target.close();
+          return;
+        }
+        // Explicit close button
+        if (e.target.classList && e.target.classList.contains('modal__close')) {
+          var d = e.target.closest('dialog');
+          if (d) d.close();
+        }
+      });
+
+      // Request form: POST to /api/contact (Cloudflare Pages Function → Resend)
+      var form = document.getElementById('request-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          submitRequestForm(form);
+        });
+      }
+
+      function submitRequestForm(form) {
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var originalLabel = submitBtn.textContent;
+        var oldError = form.querySelector('.modal__form-error');
+        if (oldError) oldError.remove();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        var payload = {
+          name:    form.elements.namedItem('name').value,
+          email:   form.elements.namedItem('email').value,
+          phone:   form.elements.namedItem('phone').value,
+          body:    form.elements.namedItem('body').value,
+          website: form.elements.namedItem('website').value
+        };
+
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          }).catch(function () {
+            return { ok: res.ok, data: {} };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            showThanks(form);
+          } else {
+            showFormError(form, submitBtn, originalLabel, result.data && result.data.error);
+          }
+        })
+        .catch(function () {
+          showFormError(form, submitBtn, originalLabel, null);
+        });
+      }
+
+      function showThanks(form) {
+        var panel = form.closest('.modal__panel');
+        panel.innerHTML =
+          '<button class="modal__close" type="button" aria-label="Đóng">×</button>' +
+          '<div class="modal__thanks">' +
+            '<h3>Thanks — we received your note.</h3>' +
+            '<p>We will reply within one business day.</p>' +
+          '</div>';
+      }
+
+      function showFormError(form, submitBtn, originalLabel, message) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+
+        var msg = message ||
+          'Something went wrong sending your message. ' +
+          'Please call (207) 518-1374 or email info@bismliving.com directly.';
+
+        var err = document.createElement('div');
+        err.className = 'modal__form-error';
+        err.setAttribute('role', 'alert');
+        err.innerHTML =
+          msg.replace(
+            /\(207\) 518-1374/,
+            '<a href="tel:+12075181374">(207) 518-1374</a>'
+          ).replace(
+            /info@bismliving\.com/,
+            '<a href="mailto:info@bismliving.com">info@bismliving.com</a>'
+          );
+        form.appendChild(err);
+      }
+    })();
+  </script>
+
+  <!-- ============================================================
+       Scroll-synced video playback
+       Each <video data-scroll-video> seeks its currentTime in proportion
+       to how far it has traversed the viewport. All-keyframe MP4 encoding
+       makes the seek stutter-free.
+       ============================================================ -->
+  <script>
+    (function () {
+      var videos = Array.prototype.slice.call(
+        document.querySelectorAll('video[data-scroll-video]')
+      );
+      if (!videos.length) return;
+
+      var rafId = null;
+      var pending = true;
+
+      function syncAll() {
+        rafId = null;
+        if (!pending) return;
+        pending = false;
+
+        var vh = window.innerHeight;
+        for (var i = 0; i < videos.length; i++) {
+          var v = videos[i];
+          if (!isFinite(v.duration) || v.duration <= 0) continue;
+          var rect = v.getBoundingClientRect();
+          // 0 when top edge first touches bottom of viewport,
+          // 1 when bottom edge clears top of viewport.
+          var travel = vh + rect.height;
+          var passed = vh - rect.top;
+          var p = passed / travel;
+          if (p < 0) p = 0;
+          else if (p > 1) p = 1;
+          var target = p * v.duration;
+          if (Math.abs(v.currentTime - target) > 0.008) {
+            try { v.currentTime = target; } catch (_) {}
+          }
+        }
+      }
+
+      function schedule() {
+        pending = true;
+        if (rafId == null) rafId = requestAnimationFrame(syncAll);
+      }
+
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule, { passive: true });
+
+      videos.forEach(function (v) {
+        v.addEventListener('loadedmetadata', schedule);
+        v.addEventListener('canplay', schedule);
+        // Some browsers won't allow seek until first .load() interaction.
+        // preload="auto" handles most; explicit kick for the rest.
+        try { v.load(); } catch (_) {}
+      });
+
+      // Initial frame after layout settles
+      requestAnimationFrame(schedule);
+    })();
+  </script>
+
+  <!-- ============================================================
+       Floating heart → CTA white heart merge animation.
+       As the CTA section enters the viewport, translate the sticky
+       sage heart toward the CTA's white heart position, fade to
+       white, and dissolve at full alignment.
+       ============================================================ -->
+  <script>
+    (function () {
+      var floatingHeart = document.querySelector('.heart-zone__anchor--left .floating-heart');
+      var ctaHeart = document.querySelector('.cta__heart');
+      var wrap = document.querySelector('.wrap');
+      if (!floatingHeart || !ctaHeart || !wrap) return;
+
+      var STICKY_TOP_OFFSET = 100;   // matches CSS .heart-zone__anchor--left .floating-heart { top: 100px }
+      var ANCHOR_LEFT_OFFSET = 80;   // matches CSS .heart-zone__anchor--left { left: 80px }
+
+      // Alignment target = the CTA heart's natural viewport position at max scroll.
+      // Recomputed on load + resize so the merge is always reachable, even on
+      // tall viewports / short pages where the CTA heart can't reach the sticky
+      // pin position before scroll bottoms out.
+      var alignmentY = STICKY_TOP_OFFSET;
+      function computeAlignmentY() {
+        var rect = ctaHeart.getBoundingClientRect();
+        var docY = rect.top + window.scrollY;
+        var maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        // Clamp so we never expect alignment above the sticky pin or off-screen
+        alignmentY = Math.max(STICKY_TOP_OFFSET, Math.min(window.innerHeight * 0.55, docY - maxScroll));
+      }
+
+      var rafId = null;
+      var pending = false;
+
+      function update() {
+        rafId = null;
+        if (!pending) return;
+        pending = false;
+
+        // Skip if the floating heart is hidden (mobile)
+        if (floatingHeart.offsetParent === null) {
+          floatingHeart.style.transform = '';
+          floatingHeart.style.opacity = '';
+          floatingHeart.classList.remove('floating-heart--white');
+          return;
+        }
+
+        var ctaHeartRect = ctaHeart.getBoundingClientRect();
+        var wrapRect = wrap.getBoundingClientRect();
+        var wh = window.innerHeight;
+
+        // The floating heart's natural sticky position in viewport coordinates:
+        var stickyLeft = wrapRect.left + ANCHOR_LEFT_OFFSET;
+        var stickyTop = STICKY_TOP_OFFSET;
+
+        // Progress: 0 when CTA heart at viewport bottom, 1 when at alignment target
+        var progress = 0;
+        if (ctaHeartRect.top < wh) {
+          if (ctaHeartRect.top > alignmentY) {
+            progress = (wh - ctaHeartRect.top) / (wh - alignmentY);
+          } else {
+            progress = 1;
+          }
+          if (progress < 0) progress = 0;
+          if (progress > 1) progress = 1;
+        }
+
+        // Translate floating heart toward CTA white heart
+        var dx = ctaHeartRect.left - stickyLeft;
+        var dy = ctaHeartRect.top - stickyTop;
+        floatingHeart.style.transform = 'translate(' + (dx * progress).toFixed(2) + 'px, ' + (dy * progress).toFixed(2) + 'px)';
+
+        // Color shift to white when close to alignment (CSS transitions filter)
+        if (progress > 0.7) {
+          floatingHeart.classList.add('floating-heart--white');
+        } else {
+          floatingHeart.classList.remove('floating-heart--white');
+        }
+
+        // Dissolve into the underlying CTA white heart at full alignment
+        if (progress > 0.95) {
+          var fade = 1 - (progress - 0.95) * 20;  // 1 → 0 over progress 0.95 → 1.0
+          floatingHeart.style.opacity = (Math.max(0, fade) * 0.85).toFixed(3);
+        } else {
+          floatingHeart.style.opacity = '';
+        }
+      }
+
+      function schedule() {
+        pending = true;
+        if (rafId == null) rafId = requestAnimationFrame(update);
+      }
+
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', function () { computeAlignmentY(); schedule(); }, { passive: true });
+      window.addEventListener('load', function () { computeAlignmentY(); schedule(); });
+      computeAlignmentY();
+      schedule();
+    })();
+  </script>
+
+</body>
+</html>
