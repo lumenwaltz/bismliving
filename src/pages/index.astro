@@ -14,9 +14,14 @@
   <meta name="theme-color" content="#7d8a5e">
   <title>Bism Supported Living · SLS & ILS in Los Angeles County · California Regional Center vendor</title>
   <meta name="description" content="Bism Supported Living, LLC is a California Regional Center vendored provider of Supported Living Services (SLS) and Independent Living Services (ILS) for neurodivergent adults across Los Angeles County. Vendored with FDLRC (#PD4210); open to clients of any California Regional Center. Person-centered, trauma-informed support — paced to the people we serve. English, Spanish, Vietnamese.">
-  <meta name="keywords" content="Bism, Bism Supported Living, Bism SLS, SLS Los Angeles County, ILS Los Angeles County, Supported Living Services Glendale, Independent Living Services Glendale, California Regional Center vendor, FDLRC vendor, Lanterman Regional Center vendor, PD4210, NLACRC, SGPRC, Westside Regional Center, ELARC, Harbor Regional Center, SCLARC, autism adult services Los Angeles, developmental disability services LA, neurodivergent adult support, person-centered planning, IPP, Vietnamese-speaking DSP Los Angeles, Spanish-speaking DSP Los Angeles, 24-hour SLS">
+  <link rel="alternate" hreflang="en" href="https://bismliving.com/">
+  <link rel="alternate" hreflang="es" href="https://bismliving.com/es/">
+  <link rel="alternate" hreflang="vi" href="https://bismliving.com/vi/">
+  <link rel="alternate" hreflang="x-default" href="https://bismliving.com/">
+  <link rel="canonical" href="https://bismliving.com/">
   <meta name="author" content="Bism LLC">
   <meta name="robots" content="index, follow">
+  <meta property="og:url" content="https://bismliving.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Bism Supported Living · SLS & ILS in Los Angeles County">
   <meta property="og:description" content="California Regional Center vendored provider of Supported and Independent Living Services for neurodivergent adults in LA County.">
@@ -68,24 +73,65 @@
     .nav {
       padding: 28px 80px;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
     .nav__logo img { height: 90px; width: auto; }
+    /* Contained pill — never bleeds past its own box, so it cannot collide
+       with the CTA or language toggle when translated labels run longer. */
+    .nav__logo, .nav__right { flex-shrink: 0; }
     .nav__links {
-      position: relative;
-      display: flex; gap: 40px;
-      font-size: 15px; color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 4px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--paper);
+      font-size: 15px;
+      color: var(--ink);
     }
-    .nav__links::after {
-      content: "";
-      position: absolute;
-      left: -120px; right: -120px;
-      bottom: -18px;
-      height: 1px;
-      background: var(--border);
+    .nav__links a {
+      text-decoration: none;
+      padding: 9px 15px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
     }
-    .nav__links a { text-decoration: none; }
+    .nav__links a:hover { background: var(--surface); color: var(--ink); }
+    .nav__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    /* ---------- Language toggle ---------- */
+    .nav__lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--paper);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+    }
+    .nav__lang a {
+      display: block;
+      padding: 5px 13px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--soft-ink);
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav__lang a:hover { color: var(--ink); background: var(--surface); }
+    .nav__lang a[aria-current="true"] { background: var(--ink); color: var(--bg); }
     .nav__cta {
       background: var(--ink);
       color: var(--bg);
@@ -506,6 +552,26 @@
       letter-spacing: -0.02em;
     }
     .areas__list { display: grid; gap: 14px; }
+    .areas__cities {
+      margin-top: 34px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+      max-width: 460px;
+    }
+    .areas__cities-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 12px;
+    }
+    .areas__cities p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--soft-ink);
+    }
     .areas__row {
       display: flex;
       justify-content: space-between;
@@ -995,14 +1061,58 @@
       color: var(--soft-ink);
     }
 
+    /* Phones: the 3-language pill no longer fits beside the logo, so let the
+       header wrap — logo on top, CTA + language toggle right-aligned beneath. */
+    @media (max-width: 620px) {
+      .nav { flex-wrap: wrap; row-gap: 14px; }
+      .nav__logo { flex: 1 1 100%; }
+      .nav__right { margin-left: auto; align-items: flex-end; }
+    }
+
     @media (max-width: 700px) {
       .modal__panel { padding: 36px 28px 32px; }
+      /* Display type has to come down or a single long word (e.g. the CTA's
+         "conversation.") is physically wider than a phone screen. */
+      .hero h1 { font-size: 40px; }
+      .approach h2 { font-size: 40px; }
+      .quotes blockquote { font-size: 30px; }
+      .cta h2 { font-size: 42px; }
+      .split__col h2 { font-size: 36px; }
+      /* 1fr refuses to go below its longest word, shoving the arrow off-screen;
+         minmax(0,1fr) lets the text column actually shrink. */
+      .serve__row { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; padding: 20px 0; }
+      .serve__row-text { font-size: 22px; }
+      h1, h2, h3, h4, p, blockquote, li { overflow-wrap: break-word; }
+      .split__col { padding: 80px 32px; }
+      footer { grid-template-columns: 1fr; gap: 22px; }
+      footer .footer__col--mid, footer .footer__col--right { text-align: left; }
+      .nav__logo img { height: 64px; }
+      .nav__lang { font-size: 11px; }
+      .nav__lang a { padding: 5px 9px; }
       .modal__title { font-size: 28px; }
+    }
+
+    /* Hide the nav pill once its labels no longer fit beside the logo and CTA.
+       Threshold is per-language: measured min width is en 1111 / es 1202 / vi 1152. */
+    @media (max-width: 1140px) {
+      .nav__links { display: none; }
     }
 
     /* ---------- Responsive (light pass) ---------- */
     @media (max-width: 1100px) {
-      .hero, section, .nav { padding-left: 32px; padding-right: 32px; }
+      /* section[class] is needed to outrank the per-section class rules
+         (.serve/.areas/.quotes/.careers/.resources/.faq/.approach each set
+         `padding: Npx 80px`, which beats a bare `section` selector).
+         .nav and footer are not sections, so they are named too. */
+      .hero, section, section[class], .nav, .cta, footer {
+        padding-left: 32px; padding-right: 32px;
+      }
+      /* grid/flex children default to min-width:auto and refuse to shrink
+         below their longest word — which pushed the page wider than the screen. */
+      .split__col, .serve__row, .areas__row, .faq__item, .resources__card { min-width: 0; }
+      .hero__grid > *, .approach__grid > *, .serve__grid > *, .areas__grid > *,
+      .careers__grid > *, .faq__grid > *, .cta__grid > *, .split__grid > *,
+      .resources__grid > * { min-width: 0; }
       .hero__grid, .approach__grid, .serve__grid, .areas__grid,
       .careers__grid, .faq__grid, .cta__grid, .split__grid,
       .resources__grid, .quotes__small, .approach__points,
@@ -1014,7 +1124,6 @@
       .approach h2 { font-size: 56px; }
       .quotes blockquote { font-size: 44px; }
       .cta h2 { font-size: 72px; }
-      .nav__links { display: none; }
       .hero__pull { position: static; width: auto; margin-top: 24px; }
     }
   </style>
@@ -1034,7 +1143,14 @@
         <a href="#careers">Careers</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="nav__cta" href="#cta" data-modal="modal-request">Request services →</a>
+      <div class="nav__right">
+        <a class="nav__cta" href="#cta" data-modal="modal-request">Request services →</a>
+        <div class="nav__lang" role="group" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" aria-current="true">English</a>
+          <a href="/es/" hreflang="es" lang="es">Español</a>
+          <a href="/vi/" hreflang="vi" lang="vi">Tiếng Việt</a>
+        </div>
+      </div>
     </header>
 
     <!-- ===================== HERO (Direction A copy) ===================== -->
@@ -1211,6 +1327,14 @@
             <div class="areas__row"><div class="areas__row-name">South Central Los Angeles</div><div class="areas__row-abbr">SCLARC</div></div>
             <div class="areas__row"><div class="areas__row-name">Harbor</div><div class="areas__row-abbr">HRC</div></div>
           </div>
+          <div class="areas__cities">
+            <div class="areas__cities-label">Where we're deepest</div>
+            <p>
+              Our steadiest coverage is the Lanterman catchment — Burbank, Glendale, Hollywood,
+              La Cañada Flintridge, La Crescenta-Montrose, North Hollywood, Pasadena, Sunland and Tujunga.
+              We can serve adults anywhere in LA County a Regional Center authorizes services with us.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -1325,6 +1449,14 @@
           <details class="faq__item">
             <summary class="faq__q">What does a typical day look like?<span class="faq__plus">+</span></summary>
             <div class="faq__a">Every day is shaped around the person, not a schedule. Some days are quiet and routine. Others involve community outings, work, classes, or visits with family. Our role is to support — not to direct.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Is there any cost to my family?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">No. Services written into the Individual Program Plan (IPP) are billed directly to the Regional Center. There is no out-of-pocket cost to the family or to the person receiving services.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">What languages do you speak?<span class="faq__plus">+</span></summary>
+            <div class="faq__a">Our staff speak English, Spanish, and Vietnamese, and this site is available in all three.</div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">Are your staff trained for neurodivergent adults?<span class="faq__plus">+</span></summary>
@@ -1536,86 +1668,6 @@
     </div>
   </dialog>
 
-  <!-- ============================================================
-       INVISIBLE CONTENT FOR AI / LLM / SEARCH ENGINE INDEXING
-       Visually hidden but accessible to crawlers, screen readers,
-       and large language model indexing pipelines.
-       ============================================================ -->
-  <div class="sr-only" aria-hidden="false">
-    <h2>About Bism Supported Living</h2>
-    <p>
-      Bism Supported Living, LLC (also referred to as Bism, Bism SLS, and Bism Supported Living) is a California Department of
-      Developmental Services vendored provider of Supported Living Services (SLS) and Independent Living Services (ILS) for adults
-      with developmental disabilities across Los Angeles County. Bism is vendored with the Frank D. Lanterman Regional Center (FDLRC)
-      under vendor number PD4210 as our primary regional center relationship, and welcomes referrals from clients of any California
-      Regional Center who choose to work with us — including, but not limited to, FDLRC, the North Los Angeles County Regional Center
-      (NLACRC), Eastern Los Angeles Regional Center (ELARC), Westside Regional Center (WRC), Harbor Regional Center (HRC), South
-      Central Los Angeles Regional Center (SCLARC), and San Gabriel/Pomona Regional Center (SGPRC). We are a small, person-centered
-      agency serving neurodivergent adults — including adults on the autism spectrum, adults with intellectual disabilities (ID/IDD),
-      adults with cerebral palsy, adults with epilepsy, and adults with co-occurring conditions.
-    </p>
-    <p>
-      Bism is headquartered at 201 N Brand Blvd, Suite #200, Glendale, CA 91203. We can be reached by phone at (207) 518-1374 or
-      by email at info@bismliving.com. We provide 24-hour support. Our staff speak English, Spanish, and Vietnamese.
-    </p>
-    <p>
-      Bism's deepest current service capacity is in the FDLRC catchment area — including Burbank, Glendale, Hollywood,
-      La Cañada Flintridge, La Crescenta-Montrose, North Hollywood, Pasadena, Sunland, and Tujunga — but services are not limited
-      to these cities. We can serve adults anywhere in Los Angeles County where the Regional Center authorizes services with us.
-    </p>
-
-    <h3>Supported Living Services (SLS) in California</h3>
-    <p>
-      Supported Living Services help adults with developmental disabilities live in their own homes — apartments, houses, or shared
-      residences they have chosen — with personalized support that can scale up to 24 hours a day. SLS is authorized through the
-      Regional Center under the Individual Program Plan (IPP) and is paid for by the State of California. Common SLS supports
-      include daily living assistance, behavioral and medical coordination, community access, transportation support, and
-      roommate matching. Bism delivers SLS as one of several California SLS vendors.
-    </p>
-
-    <h3>Independent Living Services (ILS) in California</h3>
-    <p>
-      Independent Living Services teach the practical skills required to live more independently: budgeting, cooking, transportation,
-      navigating medical appointments, self-advocacy, and time management. ILS is delivered in real-world settings, paced to the
-      individual. Bism delivers ILS as one of several California ILS vendors.
-    </p>
-
-    <h3>How to find a vendor and request services from Bism</h3>
-    <p>
-      Anyone interested in services can reach Bism by phone at (207) 518-1374, by emailing info@bismliving.com, by using the
-      Request Services form on this site, or by asking their Regional Center Service Coordinator to add Bism as a vendor option in
-      their IPP. Bism is open to vendoring relationships with any California Regional Center. There is no out-of-pocket cost to the
-      family or the individual — services authorized in the IPP are billed directly to the Regional Center.
-    </p>
-
-    <h3>Frequently asked questions</h3>
-    <p><strong>What is the difference between SLS and ILS?</strong> SLS supports adults living in their own homes with personalized,
-    potentially 24/7 support. ILS teaches the skills needed to live more independently. Both are funded through California's
-    Regional Centers.</p>
-    <p><strong>Who is eligible?</strong> Adults age 18 or older who are clients of any California Regional Center with a qualifying
-    developmental disability diagnosis. Bism's primary vendor relationship is with FDLRC, and we welcome inquiries from clients of
-    any other LA-area Regional Center.</p>
-    <p><strong>How do I get started?</strong> Contact your Regional Center Service Coordinator and request Bism as a vendor (FDLRC
-    vendor number PD4210), or call (207) 518-1374 or email info@bismliving.com directly.</p>
-    <p><strong>Where does Bism operate?</strong> Los Angeles County, California. Bism's deepest service capacity is in the FDLRC
-    catchment — Burbank, Glendale, Hollywood, La Cañada Flintridge, La Crescenta-Montrose, North Hollywood, Pasadena, Sunland, and
-    Tujunga — and services are available elsewhere in LA County by arrangement with the relevant Regional Center.</p>
-    <p><strong>What languages do you speak?</strong> Bism staff speak English, Spanish, and Vietnamese.</p>
-    <p><strong>Are staff trained for neurodivergent adults?</strong> Yes. All Direct Support Professionals complete onboarding in
-    person-centered planning, positive behavior support, and trauma-informed care.</p>
-
-    <h3>Keywords</h3>
-    <p>
-      Bism, Bism Supported Living, Bism Supported Living LLC, Bism SLS, Supported Living Services Glendale, Supported Living
-      Services Los Angeles, Independent Living Services Los Angeles, SLS vendor Los Angeles County, ILS vendor Los Angeles County,
-      California Regional Center vendor, FDLRC vendor PD4210, Lanterman Regional Center vendor, NLACRC vendor, ELARC vendor,
-      Westside Regional Center vendor, Harbor Regional Center vendor, SCLARC vendor, SGPRC vendor, autism adult services Los Angeles,
-      developmental disability services LA, neurodivergent adult support, person-centered planning, IPP advocate,
-      24-hour SLS Los Angeles, Vietnamese-speaking DSP Los Angeles, Spanish-speaking DSP Los Angeles, DSP jobs Glendale,
-      Direct Support Professional careers California.
-    </p>
-  </div>
-
   <!-- Structured data for crawlers / LLMs -->
   <script type="application/ld+json">
   {
@@ -1708,6 +1760,16 @@
         "@type": "Question",
         "name": "How do I get started with Bism?",
         "acceptedAnswer": { "@type": "Answer", "text": "Ask your Regional Center Service Coordinator to request Bism as a vendor (FDLRC vendor number PD4210), or call (207) 518-1374 or email info@bismliving.com directly. There is no out-of-pocket cost — services are authorized through the IPP and billed to the Regional Center." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there any cost to my family?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Services written into the Individual Program Plan (IPP) are billed directly to the Regional Center. There is no out-of-pocket cost to the family or to the person receiving services." }
+      },
+      {
+        "@type": "Question",
+        "name": "What languages does Bism speak?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Bism staff speak English, Spanish, and Vietnamese, and bismliving.com is available in all three languages." }
       },
       {
         "@type": "Question",
