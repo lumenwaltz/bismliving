@@ -105,9 +105,9 @@
     .nav__links a:hover { background: var(--surface); color: var(--ink); }
     .nav__right {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 12px;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
     }
     /* ---------- Language toggle ---------- */
     .nav__lang {
@@ -1066,7 +1066,7 @@
     @media (max-width: 620px) {
       .nav { flex-wrap: wrap; row-gap: 14px; }
       .nav__logo { flex: 1 1 100%; }
-      .nav__right { margin-left: auto; align-items: flex-end; }
+      .nav__right { margin-left: auto; flex-direction: column; align-items: flex-end; }
     }
 
     @media (max-width: 700px) {
@@ -1093,8 +1093,8 @@
     }
 
     /* Hide the nav pill once its labels no longer fit beside the logo and CTA.
-       Threshold is per-language: measured min width is en 1111 / es 1202 / vi 1152. */
-    @media (max-width: 1140px) {
+       Threshold is per-language: measured min width (nav pill + language pill + CTA on one line): en 1245 / es 1253 / vi 1277. */
+    @media (max-width: 1255px) {
       .nav__links { display: none; }
     }
 
@@ -1139,17 +1139,17 @@
       <nav class="nav__links">
         <a href="#services">Services</a>
         <a href="#approach">Our Approach</a>
-        <a href="#areas">Service Areas</a>
+        <a href="#areas">Areas</a>
         <a href="#careers">Careers</a>
         <a href="#faq">FAQ</a>
       </nav>
       <div class="nav__right">
-        <a class="nav__cta" href="#cta" data-modal="modal-request">Request services →</a>
         <div class="nav__lang" role="group" aria-label="Language">
           <a href="/" hreflang="en" lang="en" aria-current="true">English</a>
           <a href="/es/" hreflang="es" lang="es">Español</a>
           <a href="/vi/" hreflang="vi" lang="vi">Tiếng Việt</a>
         </div>
+        <a class="nav__cta" href="#cta" data-modal="modal-request">Request services →</a>
       </div>
     </header>
 
@@ -1378,7 +1378,7 @@
           <p class="careers__lead">
             We hire for presence and enthusiasm, then train hard for the rest.
           </p>
-          <a class="btn--accent" href="#">View open roles →</a>
+          <a class="btn--accent" href="mailto:careers@bismliving.com?subject=Careers%20at%20Bism">View open roles →</a>
         </div>
       </div>
     </section>
